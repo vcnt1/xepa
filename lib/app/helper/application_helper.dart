@@ -9,6 +9,8 @@ class MyApplicationHelper {
 
   static String formatMoneyToBr(double value) => NumberFormat("#,##0.00", "pt_BR").format(value);
 
+  static String formatMoneyToBrWithPrefix(double value) => 'R\$ ' + NumberFormat("#,##0.00", "pt_BR").format(value);
+
   static double formatWeirdMoneyStringToDouble(String value) {
     final String formatedValue = value.replaceAll('R\$', '').replaceAll(',', '').trim();
     return double.parse(formatedValue);

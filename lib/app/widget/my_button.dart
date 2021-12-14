@@ -22,7 +22,7 @@ class MyButton extends StatelessWidget {
     splashColor = MyColors.white70;
   }
 
-  MyButton.outlined({Key? key, required this.onTap, required this.label, this.child}) : super(key: key) {
+  MyButton.outlined({Key? key, required this.onTap, this.label = '', this.child}) : super(key: key) {
     buttonDecoration = BoxDecoration(
       border: Border.all(color: Colors.white),
       borderRadius: BorderRadius.circular(5.0),

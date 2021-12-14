@@ -1,7 +1,7 @@
 // import 'package:bloc/bloc.dart';
 // import 'package:flutter/material.dart';
 //
-// import 'navigator_barrel.dart';
+// import 'bag_barrel.dart';
 //
 // class NavigatorBloc extends Bloc<NavigatorEvent, MyNavigatorState> {
 //   NavigatorBloc({this.navigatorKey, this.routes, initialRoute}) : super(MyNavigatorState(currentRoute: initialRoute)) {

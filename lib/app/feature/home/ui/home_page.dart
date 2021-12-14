@@ -14,8 +14,11 @@ class HomePage extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        MyAppBar(
-          color: MyColors.primaryColor,
+        Padding(
+          padding: const EdgeInsets.all(MySizes.mainHorizontalMargin),
+          child: MyAppBar(
+            color: MyColors.primaryColor,
+          ),
         ),
         Expanded(
           child: SingleChildScrollView(

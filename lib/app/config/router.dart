@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xepa/app/feature/home/ui/home_page.dart';
 import 'package:xepa/app/feature/navigation/ui/inner_page.dart';
+import 'package:xepa/app/feature/product/ui/product_page.dart';
 import 'package:xepa/app/feature/store/ui/store_page.dart';
 import 'package:xepa/app/feature/welcome/welcome_page.dart';
 
@@ -29,6 +30,7 @@ class MyRouter {
 
   static const String homeRoute = '/home';
   static const String storeRoute = '/store';
+  static const String productRoute = '/product';
 
   static get inner => (RouteSettings settings) {
         switch (settings.name) {
@@ -41,6 +43,11 @@ class MyRouter {
             return MaterialPageRoute(
               settings: settings,
               builder: (_) => const StorePage(),
+            );
+          case productRoute:
+            return MaterialPageRoute(
+              settings: settings,
+              builder: (_) => const ProductPage(),
             );
           default:
             return defaultRoute();

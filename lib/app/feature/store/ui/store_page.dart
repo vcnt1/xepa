@@ -42,9 +42,12 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        MyAppBar(
-          color: MyColors.primaryColor,
-          showBackButton: true,
+        Padding(
+          padding: const EdgeInsets.all(MySizes.mainHorizontalMargin),
+          child: MyAppBar(
+            color: MyColors.primaryColor,
+            showBackButton: true,
+          ),
         ),
         Padding(
           padding: verticalMargin,
@@ -84,7 +87,7 @@ class CustomAppBar extends StatelessWidget {
               ),
               spacing,
               Container(
-                width: Device().screenWidth * .8,
+                width: Device().screenWidth - (MySizes.mainHorizontalMargin * 2),
                 height: Device().screenHeight * .12,
                 padding: const EdgeInsets.all(MySizes.mainHorizontalMargin),
                 decoration: const BoxDecoration(
@@ -107,7 +110,7 @@ class CustomAppBar extends StatelessWidget {
                           Expanded(
                             child: AutoSizeText(
                               'Rua Porto Alegre, 1227 - Henrique Jorge, Fortalze CEaaaaaaa',
-                              style: MyTheme.typographyBlack.default1,
+                              style: MyTheme.typographyBlack.headline5,
                               maxLines: 2,
                             ),
                           ),
@@ -194,23 +197,26 @@ class FoodItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
       GestureDetector(
-        onTap: () => Navigator.of(context).pushNamed(MyRouter.storeRoute),
+        onTap: () => Navigator.of(context).pushNamed(MyRouter.productRoute),
         child: Container(
           height: Device().screenHeight * .1,
           child: Row(
             children: [
               Flexible(
                 flex: 1,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.grey,
-                    image: DecorationImage(
-                      image: AssetImage(
-                          'assets/images/lasanha.png'),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+                child: Hero(
+                  tag: 'product-image',
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.grey,
+                      image: DecorationImage(
+                        image: AssetImage(
+                            'assets/images/lasanha.png'),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
                   ),
                 ),
@@ -242,4 +248,3 @@ class FoodItem extends StatelessWidget {
         ),
       );
 }
-
