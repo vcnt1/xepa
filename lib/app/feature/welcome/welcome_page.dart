@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:xepa/app/config/config.dart';
+import 'package:xepa/app/feature/login/ui/login_modal.dart';
 import 'package:xepa/app/widget/widgets.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -23,7 +24,7 @@ class WelcomePage extends StatelessWidget {
                 style: MyTheme.typographyWhite.headline1.copyWith(fontWeight: FontWeight.w800),
               ),
               Text(
-                'é aqui',
+                'é aqui!',
                 style: MyTheme.typographyWhite.headline1.copyWith(fontWeight: FontWeight.w800),
               ),
               sectionSpacing,
@@ -39,7 +40,11 @@ class WelcomePage extends StatelessWidget {
               buttonSpacing,
               MyButton.outlined(
                 label: 'Já sou xepeiro',
-                onTap: () {},
+                onTap: () => showModalBottomSheet<void>(
+                  context: context,
+                  isScrollControlled: true,
+                  builder: (_) => LoginModal(),
+                ),
               ),
               sectionSpacing,
               Center(

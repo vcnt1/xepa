@@ -64,6 +64,7 @@ class BagItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
       Container(
+        margin: const EdgeInsets.only(bottom: 10),
         padding: MySizes.mainHorizontalEdgeInsets,
         height: Device().screenHeight * .07,
         child: Row(
