@@ -23,6 +23,7 @@ class LoginModal extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       'Acesso',
@@ -56,8 +57,8 @@ class LoginModal extends StatelessWidget {
                   labelText: 'SENHA',
                   key: const Key('password_input_login'),
                   onChanged: (password) => context.read<LoginBloc>().add(
-                        LoginPasswordChanged(password),
-                      ),
+                    LoginPasswordChanged(password),
+                  ),
                 ),
               ),
               spacing,
@@ -66,6 +67,7 @@ class LoginModal extends StatelessWidget {
                 onTap: () => Navigator.of(context).pushNamed(MyRouter.innerRoute),
               ),
               spacing,
+              SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
               //TODO: REDEFINIR FEATURE
             ],
           ),

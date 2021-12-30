@@ -21,6 +21,13 @@ class MyDecoration {
     ),
   );
 
+  static OutlineInputBorder errorInputBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(5),
+    borderSide: BorderSide(
+      color: MyColors.red,
+    ),
+  );
+
   static BoxDecoration gradientContainer = BoxDecoration(
     gradient: LinearGradient(
       colors: [

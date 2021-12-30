@@ -5,23 +5,27 @@ import 'package:http/http.dart' as http;
 import 'package:xepa/app/model/error.dart';
 
 import 'package:xepa/app/config/enums.dart';
+
 import 'hosts.dart';
 
 class Network {
-  static final Network _instance = Network.internal();
+  static final Network _instance = Network._internal();
 
-  Network.internal() {
-    setAuthHeader();
+  factory Network() {
+    return _instance;
   }
 
-  factory Network() => _instance;
+  Network._internal() {
+    setAuthHeader();
+  }
 
   Map _authHeader = Map();
 
   Map<String, String> get authHeader => Map<String, String>.from(_authHeader);
 
   void setAuthHeader() {
-    _authHeader[HttpHeaders.authorizationHeader] = TOKEN;
+    // _authHeader[HttpHeaders.authorizationHeader] = TOKEN;
+    _authHeader[HttpHeaders.contentTypeHeader] = 'application/json';
   }
 
   Future<dynamic> get(String url, {Map<String, String>? headers}) async => request(http.get(Uri.parse(url), headers: headers ?? authHeader));

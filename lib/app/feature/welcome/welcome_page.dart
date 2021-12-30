@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/feature/login/ui/login_modal.dart';
+import 'package:xepa/app/feature/signin/ui/signin_modal.dart';
 import 'package:xepa/app/widget/widgets.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -35,7 +36,11 @@ class WelcomePage extends StatelessWidget {
               buttonSpacing,
               MyButton.outlined(
                 label: 'Faça parte',
-                onTap: () {},
+                onTap: () => showModalBottomSheet<void>(
+                  context: context,
+                  isScrollControlled: true,
+                  builder: (_) => const SigninModal(),
+                ),
               ),
               buttonSpacing,
               MyButton.outlined(
@@ -43,7 +48,7 @@ class WelcomePage extends StatelessWidget {
                 onTap: () => showModalBottomSheet<void>(
                   context: context,
                   isScrollControlled: true,
-                  builder: (_) => LoginModal(),
+                  builder: (_) => const LoginModal(),
                 ),
               ),
               sectionSpacing,

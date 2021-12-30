@@ -7,6 +7,8 @@ class MyColors {
   static Color get backgroundColor => const Color(0xFFFFF7F1);
   static Color get statusBar => const Color(0xFFD66821);
 
+  static Color get red => Colors.red;
+
   static Color get grey1 => const Color(0xFF252525);
   static Color get grey2 => const Color(0xFF545454);
   static Color get grey3 => const Color(0xFF646464);

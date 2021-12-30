@@ -3,6 +3,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:xepa/app/config/config.dart';
+import 'package:xepa/app/model/error.dart';
 
 class MyApplicationHelper {
   static void unfocus(BuildContext context) => FocusScope.of(context).requestFocus(FocusNode());
@@ -116,5 +118,12 @@ class MyApplicationHelper {
       Future.delayed(duration, () {}),
     ]);
     return data[0];
+  }
+
+  static MyError parseToMyError(Object e, ErrorType error) {
+    if(e is MyError) {
+      return e;
+    }
+    return MyError(type: error);
   }
 }
