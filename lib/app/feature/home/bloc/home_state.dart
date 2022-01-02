@@ -4,7 +4,7 @@ class HomeState extends Equatable {
   const HomeState();
 
   HomeState copyWith() =>
-      HomeState();
+      const HomeState();
 
   @override
   List<Object> get props => [];

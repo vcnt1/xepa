@@ -86,6 +86,16 @@ class MyApplicationHelper {
     return val['data'] == null ? val : json.encode(val['data']);
   }
 
+  static String formatJsonArray(String value) {
+    var val = json.decode(value);
+
+    if([val['result'], val['result']['rows']].contains(null)){
+      return val;
+    }
+
+    return json.encode(val['result']['rows']);
+  }
+
   static const _daysInMonth = const [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
   static bool isLeapYear(int value) => value % 400 == 0 || (value % 4 == 0 && value % 100 != 0);
