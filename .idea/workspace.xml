@@ -26,10 +26,13 @@
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_bloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_event.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/navigation/ui/inner_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/navigation/ui/inner_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/model/entity/barrel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/model/entity/barrel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/home/ui/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/home/ui/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/navigation/ui/inner_blocs.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/navigation/ui/inner_blocs.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/navigation/ui/inner_repositories.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/navigation/ui/inner_repositories.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/signin/bloc/signin_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/signin/bloc/signin_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/helper/application_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/helper/application_helper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/service/store_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/service/store_service.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,14 +145,14 @@
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
     <state x="722" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/59.27.1861.1053@59.27.1861.1053" timestamp="1640788949696" />
-    <state x="1264" y="143" key="#xdebugger.evaluate" timestamp="1640874146899">
+    <state x="1264" y="143" key="#xdebugger.evaluate" timestamp="1641333041652">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state x="1264" y="143" key="#xdebugger.evaluate/59.27.1861.1053@59.27.1861.1053" timestamp="1640874146899" />
-    <state x="159" y="125" width="1661" height="855" maximized="true" key="AVDManager" timestamp="1641141265201">
+    <state x="1264" y="143" key="#xdebugger.evaluate/59.27.1861.1053@59.27.1861.1053" timestamp="1641333041652" />
+    <state x="159" y="125" width="1661" height="855" maximized="true" key="AVDManager" timestamp="1641330715172">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state x="159" y="125" width="1661" height="855" maximized="true" key="AVDManager/59.27.1861.1053@59.27.1861.1053" timestamp="1641141265201" />
+    <state x="159" y="125" width="1661" height="855" maximized="true" key="AVDManager/59.27.1861.1053@59.27.1861.1053" timestamp="1641330715172" />
     <state width="503" height="506" key="DebuggerActiveHint" timestamp="1640811879266">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
@@ -158,22 +161,22 @@
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
     <state x="772" y="310" width="424" height="484" key="FileChooserDialogImpl/59.27.1861.1053@59.27.1861.1053" timestamp="1639429639634" />
-    <state width="1815" height="326" key="GridCell.Tab.0.bottom" timestamp="1640874237320">
+    <state width="1815" height="326" key="GridCell.Tab.0.bottom" timestamp="1641332021198">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="326" key="GridCell.Tab.0.bottom/59.27.1861.1053@59.27.1861.1053" timestamp="1640874237320" />
-    <state width="1815" height="326" key="GridCell.Tab.0.center" timestamp="1640874237320">
+    <state width="1815" height="326" key="GridCell.Tab.0.bottom/59.27.1861.1053@59.27.1861.1053" timestamp="1641332021198" />
+    <state width="1815" height="326" key="GridCell.Tab.0.center" timestamp="1641332021198">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="326" key="GridCell.Tab.0.center/59.27.1861.1053@59.27.1861.1053" timestamp="1640874237320" />
-    <state width="1815" height="326" key="GridCell.Tab.0.left" timestamp="1640874237319">
+    <state width="1815" height="326" key="GridCell.Tab.0.center/59.27.1861.1053@59.27.1861.1053" timestamp="1641332021198" />
+    <state width="1815" height="326" key="GridCell.Tab.0.left" timestamp="1641332021197">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="326" key="GridCell.Tab.0.left/59.27.1861.1053@59.27.1861.1053" timestamp="1640874237319" />
-    <state width="1815" height="326" key="GridCell.Tab.0.right" timestamp="1640874237320">
+    <state width="1815" height="326" key="GridCell.Tab.0.left/59.27.1861.1053@59.27.1861.1053" timestamp="1641332021197" />
+    <state width="1815" height="326" key="GridCell.Tab.0.right" timestamp="1641332021198">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="326" key="GridCell.Tab.0.right/59.27.1861.1053@59.27.1861.1053" timestamp="1640874237320" />
+    <state width="1815" height="326" key="GridCell.Tab.0.right/59.27.1861.1053@59.27.1861.1053" timestamp="1641332021198" />
     <state x="569" y="299" width="819" height="507" key="NewModule_or_Project.wizard" timestamp="1639429644531">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
@@ -182,10 +185,10 @@
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
     <state x="472" y="130" width="1024" height="845" key="SettingsEditor/59.27.1861.1053@59.27.1861.1053" timestamp="1639429649274" />
-    <state width="930" height="527" key="XDebugger.FullValuePopup" timestamp="1640873826425">
+    <state width="930" height="527" key="XDebugger.FullValuePopup" timestamp="1641333045569">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="930" height="527" key="XDebugger.FullValuePopup/59.27.1861.1053@59.27.1861.1053" timestamp="1640873826425" />
+    <state width="930" height="527" key="XDebugger.FullValuePopup/59.27.1861.1053@59.27.1861.1053" timestamp="1641333045569" />
     <state x="680" y="291" width="618" height="522" key="find.popup" timestamp="1640870825728">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>

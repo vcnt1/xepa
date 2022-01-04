@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
+import 'package:xepa/app/feature/home/bloc/home_barrel.dart';
+import 'package:xepa/app/helper/application_helper.dart';
 import 'package:xepa/app/widget/widgets.dart';
 
 import '../../../widget/app_bar.dart';
@@ -10,6 +13,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<HomeBloc>().add(HomeFetchData());
     return Column(
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,7 +24,7 @@ class HomePage extends StatelessWidget {
             color: MyColors.primaryColor,
           ),
         ),
-        Expanded(
+        const Expanded(
           child: SingleChildScrollView(
             child: Body(),
           ),
@@ -94,7 +98,8 @@ class StoreList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
+      width: double.infinity,
       padding: MySizes.mainHorizontalEdgeInsets,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,11 +109,22 @@ class StoreList extends StatelessWidget {
             style: MyTheme.typographyBlack.headline4.copyWith(fontWeight: FontWeight.w700),
           ),
           spacing,
-          const StoreItem(
-            name: 'Duetto Restaurante & Pizzaria',
-            type: 'Brasileira',
-            status: 'Aberto',
-            image: 'Image',
+          BlocBuilder<HomeBloc, HomeState>(
+            builder: (context, state) => state.status == FetchStatus.loading
+                ? CircularProgressIndicator()
+                : state.stores.isEmpty
+                    ? Text('No stores available')
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: state.stores
+                            .map((e) => StoreItem(
+                                  name: e.nome ?? 'Missing name',
+                                  type: e.tipo ?? 'Missing type',
+                                  image: e.imagem ?? '',
+                                  status: '<FALTA>',
+                                ))
+                            .toList(),
+                      ),
           ),
         ],
       ),
@@ -127,24 +143,22 @@ class StoreItem extends StatelessWidget {
   final SizedBox spacing = const SizedBox(width: 10);
 
   @override
-  Widget build(BuildContext context) =>
-      GestureDetector(
+  Widget build(BuildContext context) => GestureDetector(
         onTap: () => Navigator.of(context).pushNamed(MyRouter.storeRoute),
-        child: Container(
+        child: SizedBox(
           height: Device().screenHeight * .1,
           child: Row(
             children: [
               Flexible(
                 flex: 1,
                 child: Container(
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.grey,
                     image: DecorationImage(
-                      image: AssetImage(
-                          'assets/images/dueto-logo.png'),
+                      image: image != '' ? MyApplicationHelper.imageFromBase64String(image).image : AssetImage('assets/images/dueto-logo.png'),
                       fit: BoxFit.cover,
                     ),
-                    borderRadius: BorderRadius.all(
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(10),
                     ),
                   ),

@@ -72,6 +72,7 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
 
         if(res.error != null){
           emit(state.copyWith(status: FormzStatus.submissionFailure));
+          return;
         }
 
         emit(state.copyWith(status: FormzStatus.submissionSuccess));

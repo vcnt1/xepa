@@ -9,7 +9,6 @@ class StoreService {
 
   Future<dynamic> fetchStores() async => await _network.get(urlStores);
 
-  Future<dynamic> getRequestQueryUrl({required Map<String, String> queryParameters}) async => MyNetworkHelper.getRequestQueryUrl(url, queryParameters: queryParameters);
-
-  Future<dynamic> post({required Map<String, String> body}) async => await _network.post(url, body: body);
+  // Future<dynamic> getRequestQueryUrl({required Map<String, String> queryParameters}) async => MyNetworkHelper.getRequestQueryUrl(urlStores, queryParameters: queryParameters);
+  // Future<dynamic> post({required Map<String, String> body}) async => await _network.post(url, body: body);
 }

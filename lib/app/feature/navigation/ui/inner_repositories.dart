@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:xepa/app/repository/store_repository.dart';
 import 'package:xepa/app/repository/user_repository.dart';
 
 class MyRepositories extends StatelessWidget {
@@ -10,7 +11,7 @@ class MyRepositories extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MultiRepositoryProvider(
       providers: [
-        RepositoryProvider(create: (context) => UserRepository()),
+        RepositoryProvider(create: (context) => StoreRepository()),
       ],
       child: child,
     );

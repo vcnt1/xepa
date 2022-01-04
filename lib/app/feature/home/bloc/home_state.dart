@@ -1,11 +1,18 @@
 import 'package:equatable/equatable.dart';
+import 'package:xepa/app/config/enums.dart';
+import 'package:xepa/app/model/entity/barrel.dart';
 
 class HomeState extends Equatable {
-  const HomeState();
+  HomeState({
+    this.status = FetchStatus.initial,
+    List<Store>? stores,
+  }) {
+    this.stores = stores ?? <Store>[];
+  }
 
-  HomeState copyWith() =>
-      const HomeState();
+  final FetchStatus status;
+  late List<Store> stores;
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [status, stores];
 }

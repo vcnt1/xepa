@@ -136,4 +136,8 @@ class MyApplicationHelper {
     }
     return MyError(type: error);
   }
+
+  static Image imageFromBase64String(String base64String) {
+    return Image.memory(base64Decode(base64String));
+  }
 }
