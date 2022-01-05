@@ -2,8 +2,9 @@
 //
 //     final product = productFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
+
+List<Product> productsFromJson(String str) => List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
 
 Product productFromJson(String str) => Product.fromJson(json.decode(str));
 
@@ -11,36 +12,64 @@ String productToJson(Product data) => json.encode(data.toJson());
 
 class Product {
   Product({
-    required this.name,
-    required this.description,
-    required this.about,
-    required this.quantity,
-    required this.oldPrice,
-    required this.price,
+    this.id,
+    this.idEstabelecimento,
+    this.nome,
+    this.descricao,
+    this.imagem,
+    this.tipo,
+    this.data,
+    this.peso,
+    this.precoOriginal,
+    this.precoPromocional,
+    this.quantidade,
+    this.createdAt,
+    this.updatedAt,
   });
 
-  final String name;
-  final String description;
-  final String about;
-  final int quantity;
-  final double oldPrice;
-  final double price;
+  final String? id;
+  final String? idEstabelecimento;
+  final String? nome;
+  final String? descricao;
+  final String? imagem;
+  final String? tipo;
+  final DateTime? data;
+  final int? peso;
+  final double? precoOriginal;
+  final double? precoPromocional;
+  final int? quantidade;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-        name: json["name"],
-        description: json["description"],
-        about: json["about"],
-        quantity: json["quantity"],
-        oldPrice: json["old_price"],
-        price: json["price"],
-      );
+    id: json["Id"],
+    idEstabelecimento: json["Id_Estabelecimento"],
+    nome: json["Nome"],
+    descricao: json["Descricao"],
+    imagem: json["Imagem"],
+    tipo: json["Tipo"],
+    data: DateTime.parse(json["Data"]),
+    peso: json["Peso"],
+    precoOriginal: json["Preco_Original"].toDouble(),
+    precoPromocional: json["Preco_Promocional"].toDouble(),
+    quantidade: json["Quantidade"],
+    createdAt: DateTime.parse(json["createdAt"]),
+    updatedAt: DateTime.parse(json["updatedAt"]),
+  );
 
   Map<String, dynamic> toJson() => {
-        "name": name,
-        "description": description,
-        "about": about,
-        "quantity": quantity,
-        "old_price": oldPrice,
-        "price": price,
-      };
+    "Id": id,
+    "Id_Estabelecimento": idEstabelecimento,
+    "Nome": nome,
+    "Descricao": descricao,
+    "Imagem": imagem,
+    "Tipo": tipo,
+    "Data": data?.toIso8601String(),
+    "Peso": peso,
+    "Preco_Original": precoOriginal,
+    "Preco_Promocional": precoPromocional,
+    "Quantidade": quantidade,
+    "createdAt": createdAt?.toIso8601String(),
+    "updatedAt": updatedAt?.toIso8601String(),
+  };
 }

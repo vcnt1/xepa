@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
-import 'package:xepa/app/feature/session/bloc/session_barrel.dart';
+import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
 
 import '../../bag/ui/bag.dart';
 import 'inner_repositories.dart';

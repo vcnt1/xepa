@@ -81,18 +81,10 @@ class Body extends StatelessWidget {
             child: FoodDetail(),
           ),
           MyButton(
-              onTap: () => BlocProvider.of<BagBloc>(context).add(
-                    BagAddProduct(
-                      Product(
-                        name: 'Lasanha',
-                        about: 'Contém: Molho de tomare, carne moída, queijo, presunto e molho branco.',
-                        description: '500g',
-                        quantity: 1,
-                        oldPrice: 20,
-                        price: 10,
-                      ),
-                    ),
-                  ),
+              onTap: () {},
+              // onTap: () => BlocProvider.of<BagBloc>(context).add(
+              //       BagAddProduct(),
+              //     ),
               label: 'Adicionar'),
         ],
       ),

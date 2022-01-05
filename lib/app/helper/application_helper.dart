@@ -140,4 +140,13 @@ class MyApplicationHelper {
   static Image imageFromBase64String(String base64String) {
     return Image.memory(base64Decode(base64String));
   }
+
+  static ImageProvider parseImg(String image) {
+    try {
+      final img = imageFromBase64String(image);
+      return img.image;
+    } catch (_) {
+      return const AssetImage('assets/images/dueto-logo.png');
+    }
+  }
 }

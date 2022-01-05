@@ -2,8 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/model/entity/barrel.dart';
 import 'package:xepa/app/repository/store_repository.dart';
+import 'package:equatable/equatable.dart';
 
-import 'home_barrel.dart';
+part 'home_event.dart';
+part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({required StoreRepository storeRepository})

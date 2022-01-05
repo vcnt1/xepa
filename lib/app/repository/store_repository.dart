@@ -17,4 +17,14 @@ class StoreRepository {
       return Entity<List<Store>>(error: MyApplicationHelper.parseToMyError(res, ErrorType.invalidFormat));
     }
   }
+
+  Future<Entity<List<Product>>> fetchStoreProducts({required String storeId}) async {
+    final res = await _storeService.fetchStoreProducts(storeId: storeId);
+    try {
+      final products = productsFromJson(MyApplicationHelper.formatJsonArray(res));
+      return Entity<List<Product>>(object: products);
+    } catch (e) {
+      return Entity<List<Product>>(error: MyApplicationHelper.parseToMyError(res, ErrorType.invalidFormat));
+    }
+  }
 }

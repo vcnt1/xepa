@@ -25,13 +25,25 @@
     <list default="true" id="ef0e2d4c-06dc-4fc2-b586-49963d67b4e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/bag/bloc/bag_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/bag/bloc/bag_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/bag/ui/bag.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/bag/ui/bag.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_barrel.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_event.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/home/bloc/home_state.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/feature/home/ui/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/home/ui/home_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/feature/navigation/ui/inner_blocs.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/navigation/ui/inner_blocs.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/navigation/ui/inner_repositories.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/navigation/ui/inner_repositories.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/signin/bloc/signin_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/signin/bloc/signin_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/navigation/ui/inner_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/navigation/ui/inner_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/navigation/ui/outter_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/navigation/ui/outter_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/product/ui/product_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/product/ui/product_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/session/bloc/session_barrel.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/session/bloc/session_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/session/bloc/session_bloc.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/session/bloc/session_event.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/session/bloc/session_event.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/session/bloc/session_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/session/bloc/session_state.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/feature/store/ui/store_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/store/ui/store_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/helper/application_helper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/helper/application_helper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/model/entity/product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/model/entity/product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/repository/store_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/repository/store_repository.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/service/store_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/service/store_service.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,9 +88,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/app/service" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/app/feature/store/bloc" />
     <property name="memory.settings.postsync.last.time.stamp" value="1639429645612" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -86,16 +97,16 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib/app/model/entity" />
-      <recent name="$PROJECT_DIR$/lib/app/feature/bag/ui" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/app/feature/store/bloc" />
       <recent name="$PROJECT_DIR$/lib/app/service" />
       <recent name="$PROJECT_DIR$/lib/app/repository" />
       <recent name="$PROJECT_DIR$/lib/app/feature/signin" />
       <recent name="$PROJECT_DIR$/lib/app/feature/login/bloc" />
-      <recent name="$PROJECT_DIR$/lib/app/feature/login/ui" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/app/model/entity" />
+      <recent name="$PROJECT_DIR$/lib/app/feature/bag/ui" />
     </key>
   </component>
   <component name="RunManager">
@@ -149,10 +160,10 @@
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
     <state x="1264" y="143" key="#xdebugger.evaluate/59.27.1861.1053@59.27.1861.1053" timestamp="1641333041652" />
-    <state x="159" y="125" width="1661" height="855" maximized="true" key="AVDManager" timestamp="1641330715172">
+    <state x="159" y="125" width="1661" height="855" maximized="true" key="AVDManager" timestamp="1641418713004">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state x="159" y="125" width="1661" height="855" maximized="true" key="AVDManager/59.27.1861.1053@59.27.1861.1053" timestamp="1641330715172" />
+    <state x="159" y="125" width="1661" height="855" maximized="true" key="AVDManager/59.27.1861.1053@59.27.1861.1053" timestamp="1641418713004" />
     <state width="503" height="506" key="DebuggerActiveHint" timestamp="1640811879266">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
@@ -161,22 +172,22 @@
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
     <state x="772" y="310" width="424" height="484" key="FileChooserDialogImpl/59.27.1861.1053@59.27.1861.1053" timestamp="1639429639634" />
-    <state width="1815" height="326" key="GridCell.Tab.0.bottom" timestamp="1641332021198">
+    <state width="1815" height="326" key="GridCell.Tab.0.bottom" timestamp="1641419563130">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="326" key="GridCell.Tab.0.bottom/59.27.1861.1053@59.27.1861.1053" timestamp="1641332021198" />
-    <state width="1815" height="326" key="GridCell.Tab.0.center" timestamp="1641332021198">
+    <state width="1815" height="326" key="GridCell.Tab.0.bottom/59.27.1861.1053@59.27.1861.1053" timestamp="1641419563130" />
+    <state width="1815" height="326" key="GridCell.Tab.0.center" timestamp="1641419563129">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="326" key="GridCell.Tab.0.center/59.27.1861.1053@59.27.1861.1053" timestamp="1641332021198" />
-    <state width="1815" height="326" key="GridCell.Tab.0.left" timestamp="1641332021197">
+    <state width="1815" height="326" key="GridCell.Tab.0.center/59.27.1861.1053@59.27.1861.1053" timestamp="1641419563129" />
+    <state width="1815" height="326" key="GridCell.Tab.0.left" timestamp="1641419563129">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="326" key="GridCell.Tab.0.left/59.27.1861.1053@59.27.1861.1053" timestamp="1641332021197" />
-    <state width="1815" height="326" key="GridCell.Tab.0.right" timestamp="1641332021198">
+    <state width="1815" height="326" key="GridCell.Tab.0.left/59.27.1861.1053@59.27.1861.1053" timestamp="1641419563129" />
+    <state width="1815" height="326" key="GridCell.Tab.0.right" timestamp="1641419563130">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="326" key="GridCell.Tab.0.right/59.27.1861.1053@59.27.1861.1053" timestamp="1641332021198" />
+    <state width="1815" height="326" key="GridCell.Tab.0.right/59.27.1861.1053@59.27.1861.1053" timestamp="1641419563130" />
     <state x="569" y="299" width="819" height="507" key="NewModule_or_Project.wizard" timestamp="1639429644531">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
@@ -189,10 +200,10 @@
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
     <state width="930" height="527" key="XDebugger.FullValuePopup/59.27.1861.1053@59.27.1861.1053" timestamp="1641333045569" />
-    <state x="680" y="291" width="618" height="522" key="find.popup" timestamp="1640870825728">
+    <state x="680" y="291" width="618" height="632" key="find.popup" timestamp="1641422436404">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state x="680" y="291" width="618" height="522" key="find.popup/59.27.1861.1053@59.27.1861.1053" timestamp="1640870825728" />
+    <state x="680" y="291" width="618" height="632" key="find.popup/59.27.1861.1053@59.27.1861.1053" timestamp="1641422436404" />
     <state x="653" y="253" key="run.anything.popup" timestamp="1640871301703">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>

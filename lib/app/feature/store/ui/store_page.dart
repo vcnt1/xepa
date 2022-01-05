@@ -1,6 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
+import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
+import 'package:xepa/app/feature/store/bloc/store_bloc.dart';
+import 'package:xepa/app/helper/application_helper.dart';
+import 'package:xepa/app/repository/store_repository.dart';
 import 'package:xepa/app/widget/widgets.dart';
 
 class StorePage extends StatelessWidget {
@@ -8,24 +13,30 @@ class StorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.black,
-        image: DecorationImage(
-          image: AssetImage('assets/images/bg-food.png'),
-          fit: BoxFit.cover,
-          opacity: .3,
-        ),
+    return BlocProvider(
+      create: (context) => StoreBloc(
+        store: context.read<SessionBloc>().state.selectedStore,
+        storeRepository: context.read<StoreRepository>(),
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomAppBar(),
-          const Expanded(
-            child: Body(),
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Colors.black,
+          image: DecorationImage(
+            image: AssetImage('assets/images/bg-food.png'),
+            fit: BoxFit.cover,
+            opacity: .3,
           ),
-        ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CustomAppBar(),
+            const Expanded(
+              child: Body(),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -49,83 +60,85 @@ class CustomAppBar extends StatelessWidget {
             showBackButton: true,
           ),
         ),
-        Padding(
-          padding: verticalMargin,
-          child: Column(
-            children: [
-              Container(
-                width: Device().screenHeight * .08,
-                height: Device().screenHeight * .08,
-                decoration: const BoxDecoration(
-                  color: Colors.grey,
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/dueto-logo.png'),
-                    fit: BoxFit.cover,
-                  ),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                ),
-              ),
-              spacing,
-              Text('Duettos Restaurante & Pizzaria', style: MyTheme.typographyWhite.headline5),
-              Text('Brasileira', style: MyTheme.typographyWhite.headline6),
-              spacing,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.shopping_bag, color: MyColors.primaryColor),
-                  iconSpacing,
-                  Icon(Icons.shopping_bag, color: MyColors.primaryColor),
-                  iconSpacing,
-                  Icon(Icons.shopping_bag, color: MyColors.primaryColor),
-                  iconSpacing,
-                  Icon(Icons.shopping_bag_outlined, color: MyColors.grey4),
-                  iconSpacing,
-                  Icon(Icons.shopping_bag_outlined, color: MyColors.grey4),
-                ],
-              ),
-              spacing,
-              Container(
-                width: Device().screenWidth - (MySizes.mainHorizontalMargin * 2),
-                height: Device().screenHeight * .12,
-                padding: const EdgeInsets.all(MySizes.mainHorizontalMargin),
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(20),
+        BlocBuilder<StoreBloc, StoreState>(
+          builder: (context, state) => Padding(
+            padding: verticalMargin,
+            child: Column(
+              children: [
+                Container(
+                  width: Device().screenHeight * .08,
+                  height: Device().screenHeight * .08,
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    image: DecorationImage(
+                      image: MyApplicationHelper.parseImg(state.store.imagem ?? ''),
+                      fit: BoxFit.cover,
+                    ),
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(10),
+                    ),
                   ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                spacing,
+                Text(state.store.nome ?? '', style: MyTheme.typographyWhite.headline5),
+                Text(state.store.tipo ?? '', style: MyTheme.typographyWhite.headline6),
+                spacing,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Endereço para retirada',
-                            style: MyTheme.typographyBlack.label1,
-                          ),
-                          Expanded(
-                            child: AutoSizeText(
-                              'Rua Porto Alegre, 1227 - Henrique Jorge, Fortalze CEaaaaaaa',
-                              style: MyTheme.typographyBlack.headline5,
-                              maxLines: 2,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    Icon(Icons.shopping_bag, color: MyColors.primaryColor),
                     iconSpacing,
-                    Icon(
-                      Icons.map_outlined,
-                      color: MyColors.primaryColor,
-                    ),
+                    Icon(Icons.shopping_bag, color: MyColors.primaryColor),
+                    iconSpacing,
+                    Icon(Icons.shopping_bag, color: MyColors.primaryColor),
+                    iconSpacing,
+                    Icon(Icons.shopping_bag_outlined, color: MyColors.grey4),
+                    iconSpacing,
+                    Icon(Icons.shopping_bag_outlined, color: MyColors.grey4),
                   ],
                 ),
-              ),
-            ],
+                spacing,
+                Container(
+                  width: Device().screenWidth - (MySizes.mainHorizontalMargin * 2),
+                  height: Device().screenHeight * .12,
+                  padding: const EdgeInsets.all(MySizes.mainHorizontalMargin),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Endereço para retirada',
+                              style: MyTheme.typographyBlack.label1,
+                            ),
+                            Expanded(
+                              child: AutoSizeText(
+                                '${state.store.logradouro}, ${state.store.numero} - ${state.store.bairro}, ${state.store.localidade} - ${state.store.uf}',
+                                style: MyTheme.typographyBlack.headline5,
+                                maxLines: 2,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      iconSpacing,
+                      Icon(
+                        Icons.map_outlined,
+                        color: MyColors.primaryColor,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ],

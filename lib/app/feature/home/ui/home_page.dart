@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
-import 'package:xepa/app/feature/home/bloc/home_barrel.dart';
+import 'package:xepa/app/feature/home/bloc/home_bloc.dart';
+import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
 import 'package:xepa/app/helper/application_helper.dart';
+import 'package:xepa/app/model/entity/store.dart';
 import 'package:xepa/app/widget/widgets.dart';
 
 import '../../../widget/app_bar.dart';
@@ -111,18 +113,13 @@ class StoreList extends StatelessWidget {
           spacing,
           BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) => state.status == FetchStatus.loading
-                ? CircularProgressIndicator()
+                ? const CircularProgressIndicator()
                 : state.stores.isEmpty
-                    ? Text('No stores available')
+                    ? const Text('No stores available')
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: state.stores
-                            .map((e) => StoreItem(
-                                  name: e.nome ?? 'Missing name',
-                                  type: e.tipo ?? 'Missing type',
-                                  image: e.imagem ?? '',
-                                  status: '<FALTA>',
-                                ))
+                            .map((store) => StoreItem(store: store))
                             .toList(),
                       ),
           ),
@@ -133,18 +130,18 @@ class StoreList extends StatelessWidget {
 }
 
 class StoreItem extends StatelessWidget {
-  const StoreItem({Key? key, required this.name, required this.status, required this.type, required this.image}) : super(key: key);
+  const StoreItem({Key? key, required this.store}) : super(key: key);
 
-  final String name;
-  final String status;
-  final String type;
-  final String image;
+  final Store store;
 
   final SizedBox spacing = const SizedBox(width: 10);
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: () => Navigator.of(context).pushNamed(MyRouter.storeRoute),
+        onTap: () {
+          context.read<SessionBloc>().add(SessionSelectedStoreChanged(store));
+          Navigator.of(context).pushNamed(MyRouter.storeRoute);
+        },
         child: SizedBox(
           height: Device().screenHeight * .1,
           child: Row(
@@ -155,7 +152,7 @@ class StoreItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.grey,
                     image: DecorationImage(
-                      image: image != '' ? MyApplicationHelper.imageFromBase64String(image).image : AssetImage('assets/images/dueto-logo.png'),
+                      image: MyApplicationHelper.parseImg(store.imagem ?? ''),
                       fit: BoxFit.cover,
                     ),
                     borderRadius: const BorderRadius.all(
@@ -172,15 +169,15 @@ class StoreItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      name,
+                      store.nome ?? '',
                       style: MyTheme.typographyBlack.headline5,
                     ),
                     Text(
-                      type,
+                      store.tipo ?? '',
                       style: MyTheme.typographyBlack.headline6,
                     ),
                     Text(
-                      status,
+                      store.tipo ?? '',
                       style: MyTheme.typographyBlack.default2.copyWith(color: MyColors.green),
                     ),
                   ],

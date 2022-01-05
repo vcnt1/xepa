@@ -19,11 +19,11 @@ class BagBloc extends Bloc<BagEvent, BagState> {
     List<Product> products = state.products.isEmpty ? [] : state.products;
     products.add(event.product);
 
-    double total = calculateTotalFromProducts(products);
+    double total = 10.0;
 
     emit(BagState(products = products, total = total),
     );
   }
 
-  double calculateTotalFromProducts(List<Product> products) => products.fold(0, (p, Product c) => p + (c.price * c.quantity));
+  // double calculateTotalFromProducts(List<Product> products) => products.fold(0, (p, Product c) => p + (c.precoPromocional * (c.quantidade ?? 0)));
 }

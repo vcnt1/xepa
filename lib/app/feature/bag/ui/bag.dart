@@ -37,9 +37,9 @@ class Bag extends StatelessWidget {
                       .map(
                         (e) =>
                         BagItem(
-                          name: e.name,
+                          name: e.nome ?? '',
                           image: 'Image',
-                          price: e.price,
+                          price: e.precoPromocional ?? 10,
                         ),
                   )
                       .toList(),

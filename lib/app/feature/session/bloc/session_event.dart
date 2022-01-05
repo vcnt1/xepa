@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
+part of 'session_bloc.dart';
 
 abstract class SessionEvent extends Equatable {
   const SessionEvent();
@@ -11,7 +10,6 @@ abstract class SessionEvent extends Equatable {
 class SessionInitial extends SessionEvent {
   const SessionInitial(this.user);
 
-  // final User user;
   final String user;
 
   @override
@@ -19,3 +17,12 @@ class SessionInitial extends SessionEvent {
 }
 
 class SessionUserLogged extends SessionEvent {}
+
+class SessionSelectedStoreChanged extends SessionEvent {
+  const SessionSelectedStoreChanged(this.store);
+
+  final Store store;
+
+  @override
+  List<Object> get props => [store];
+}

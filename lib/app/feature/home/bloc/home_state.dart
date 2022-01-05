@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:xepa/app/config/enums.dart';
-import 'package:xepa/app/model/entity/barrel.dart';
+part of 'home_bloc.dart';
 
 class HomeState extends Equatable {
   HomeState({

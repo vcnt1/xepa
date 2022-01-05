@@ -1,4 +1,4 @@
-import 'package:xepa/app/feature/session/bloc/session_barrel.dart';
+import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
 import 'package:xepa/app/repository/user_repository.dart';
 import 'package:xepa/app/widget/keyboard_dismissible.dart';
 import 'package:xepa/app/config/config.dart';
