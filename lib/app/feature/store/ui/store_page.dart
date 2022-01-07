@@ -5,19 +5,23 @@ import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
 import 'package:xepa/app/feature/store/bloc/store_bloc.dart';
 import 'package:xepa/app/helper/application_helper.dart';
+import 'package:xepa/app/model/entity/product.dart';
+import 'package:xepa/app/model/entity/store.dart';
 import 'package:xepa/app/repository/store_repository.dart';
 import 'package:xepa/app/widget/widgets.dart';
 
 class StorePage extends StatelessWidget {
-  const StorePage({Key? key}) : super(key: key);
+  const StorePage({Key? key, required this.store}) : super(key: key);
+
+  final Store store;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => StoreBloc(
-        store: context.read<SessionBloc>().state.selectedStore,
+        store: store,
         storeRepository: context.read<StoreRepository>(),
-      ),
+      )..add(StoreFetchProducts()),
       child: Container(
         decoration: const BoxDecoration(
           color: Colors.black,
@@ -154,6 +158,7 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: double.infinity,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -185,11 +190,20 @@ class FoodList extends StatelessWidget {
             style: MyTheme.typographyBlack.headline4.copyWith(fontWeight: FontWeight.w700),
           ),
           spacing,
-          const FoodItem(
-            name: 'Lasanha',
-            type: 'Muito boa.',
-            status: '500g',
-            image: 'Image',
+          BlocBuilder<StoreBloc, StoreState>(
+            builder: (context, state) => state.status == FetchStatus.loading
+                ? const CircularProgressIndicator()
+                : state.products.isEmpty
+                    ? Column(
+                        children: [
+                          const Text('No products available'),
+                          MyButton(onTap: () => context.read<StoreBloc>().add(StoreFetchProducts()), label: 'Procurar novamente'),
+                        ],
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: state.products.map((e) => ProductItem(product: e)).toList(),
+                      ),
           ),
         ],
       ),
@@ -197,21 +211,18 @@ class FoodList extends StatelessWidget {
   }
 }
 
-class FoodItem extends StatelessWidget {
-  const FoodItem({Key? key, required this.name, required this.status, required this.type, required this.image}) : super(key: key);
+class ProductItem extends StatelessWidget {
+  const ProductItem({Key? key, required this.product}) : super(key: key);
 
-  final String name;
-  final String status;
-  final String type;
-  final String image;
+  final Product product;
 
   final SizedBox spacing = const SizedBox(width: 10);
 
   @override
-  Widget build(BuildContext context) =>
-      GestureDetector(
-        onTap: () => Navigator.of(context).pushNamed(MyRouter.productRoute),
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: () => Navigator.of(context).pushNamed(MyRouter.productRoute, arguments: [product, context.read<StoreBloc>().state.store]),
         child: Container(
+          padding: const EdgeInsets.only(bottom: 10),
           height: Device().screenHeight * .1,
           child: Row(
             children: [
@@ -220,14 +231,13 @@ class FoodItem extends StatelessWidget {
                 child: Hero(
                   tag: 'product-image',
                   child: Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.grey,
                       image: DecorationImage(
-                        image: AssetImage(
-                            'assets/images/lasanha.png'),
+                        image: MyApplicationHelper.parseImg(product.imagem ?? ''),
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(10),
                       ),
                     ),
@@ -242,15 +252,15 @@ class FoodItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      name,
+                      product.nome ?? '',
                       style: MyTheme.typographyBlack.headline5,
                     ),
                     Text(
-                      type,
+                      product.tipo ?? '',
                       style: MyTheme.typographyBlack.headline6,
                     ),
                     Text(
-                      status,
+                      product.descricao ?? '',
                       style: MyTheme.typographyBlack.default2.copyWith(color: MyColors.green),
                     ),
                   ],

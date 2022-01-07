@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:xepa/app/model/entity/product.dart';
+part of 'bag_bloc.dart';
 
 class BagState extends Equatable {
   const BagState([

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:xepa/app/feature/bag/bloc/bag_barrel.dart';
+import 'package:xepa/app/feature/bag/bloc/bag_bloc.dart';
 import 'package:xepa/app/feature/home/bloc/home_bloc.dart';
 import 'package:xepa/app/repository/store_repository.dart';
 

@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'widgets.dart';
 
 class QuantityInput extends StatefulWidget {
-  const QuantityInput({Key? key, required this.onValueChanged, this.initialValue = 1}) : super(key: key);
+  const QuantityInput({Key? key, required this.onValueChanged, this.initialValue = 1, this.maxValue}) : super(key: key);
 
   final ValueChanged<int> onValueChanged;
   final int initialValue;
+  final int? maxValue;
 
   @override
   _QuantityInputState createState() => _QuantityInputState();
@@ -54,7 +55,7 @@ class _QuantityInputState extends State<QuantityInput> {
           MyButton(
             label: '',
             onTap: () {
-              setState(() => counter += 1);
+              setState(() => counter += counter == widget.maxValue ? 0 : 1);
               widget.onValueChanged(counter);
             },
             child: const Padding(

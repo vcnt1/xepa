@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
-import 'package:xepa/app/feature/bag/bloc/bag_barrel.dart';
+import 'package:xepa/app/feature/bag/bloc/bag_bloc.dart';
 import 'package:xepa/app/helper/application_helper.dart';
 import 'package:xepa/app/widget/widgets.dart';
 
@@ -38,8 +38,8 @@ class Bag extends StatelessWidget {
                         (e) =>
                         BagItem(
                           name: e.nome ?? '',
-                          image: 'Image',
-                          price: e.precoPromocional ?? 10,
+                          image: e.imagem ?? '',
+                          price: e.precoPromocional ?? 0,
                         ),
                   )
                       .toList(),

@@ -12,13 +12,5 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
   }
 
   void _onEvent(SessionEvent event, Emitter<SessionState> emit) {
-    if (event is SessionSelectedStoreChanged) return _onSessionSelectedStoreChanged(event, emit);
-  }
-
-  void _onSessionSelectedStoreChanged(
-    SessionSelectedStoreChanged event,
-    Emitter emit,
-  ) {
-    emit(state.copyWith(selectedStore: event.store));
   }
 }

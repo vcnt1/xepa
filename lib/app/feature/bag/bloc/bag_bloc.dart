@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:xepa/app/model/entity/product.dart';
 
-import 'bag_barrel.dart';
+part 'bag_event.dart';
+part 'bag_state.dart';
 
 class BagBloc extends Bloc<BagEvent, BagState> {
   BagBloc() : super(const BagState()){

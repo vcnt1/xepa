@@ -1,36 +1,45 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
-import 'package:xepa/app/feature/bag/bloc/bag_barrel.dart';
+import 'package:xepa/app/feature/bag/bloc/bag_bloc.dart';
+import 'package:xepa/app/feature/product/bloc/product_bloc.dart';
+import 'package:xepa/app/feature/store/bloc/store_bloc.dart';
+import 'package:xepa/app/helper/application_helper.dart';
 import 'package:xepa/app/model/entity/product.dart';
+import 'package:xepa/app/model/entity/store.dart';
 import 'package:xepa/app/widget/widgets.dart';
 
 class ProductPage extends StatelessWidget {
-  const ProductPage({Key? key}) : super(key: key);
+  const ProductPage({Key? key, required this.product, required this.store}) : super(key: key);
+
+  final Product product;
+  final Store store;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Hero(
-          tag: 'product-image',
-          child: Container(
-            height: Device().screenHeight * .4,
-            decoration: const BoxDecoration(
-              color: Colors.black,
-              image: DecorationImage(
-                image: AssetImage('assets/images/lasanha.png'),
-                fit: BoxFit.fitHeight,
+    return BlocProvider(
+      create: (context) => ProductBloc(store: store, product: product),
+      child: Stack(
+        children: [
+          Hero(
+            tag: 'product-image',
+            child: Container(
+              height: Device().screenHeight * .4,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                image: DecorationImage(
+                  image: MyApplicationHelper.parseImg(product.imagem ?? ''),
+                  fit: BoxFit.fitHeight,
+                ),
               ),
             ),
           ),
-        ),
-        Positioned(
-          top: Device().screenHeight * .4 - 20,
-          child: Body(),
-        ),
-      ],
+          Positioned.fill(
+            top: Device().screenHeight * .4 - 20,
+            child: Body(),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -46,11 +55,13 @@ class CustomAppBar extends StatelessWidget {
     return MyAppBar(
       color: MyColors.primaryColor,
       showBackButton: true,
-      middleElement: Column(
-        children: [
-          Text('Duettos Restaurante & Pizzaria', style: MyTheme.typographyBlack.headline5),
-          Text('Brasileira', style: MyTheme.typographyBlack.headline6),
-        ],
+      middleElement: BlocBuilder<ProductBloc, ProductState>(
+        builder: (context, state) => Column(
+          children: [
+            Text(state.store.nome ?? '', style: MyTheme.typographyBlack.headline5),
+            Text(state.store.tipo ?? '', style: MyTheme.typographyBlack.headline6),
+          ],
+        ),
       ),
     );
   }
@@ -64,8 +75,6 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Device().screenWidth,
-      height: Device().screenHeight * .6,
       padding: const EdgeInsets.symmetric(horizontal: MySizes.mainHorizontalMargin, vertical: MySizes.mainHorizontalMargin),
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -81,11 +90,14 @@ class Body extends StatelessWidget {
             child: FoodDetail(),
           ),
           MyButton(
-              onTap: () {},
-              // onTap: () => BlocProvider.of<BagBloc>(context).add(
-              //       BagAddProduct(),
-              //     ),
-              label: 'Adicionar'),
+            label: 'Adicionar',
+            onTap: () => BlocProvider.of<BagBloc>(context).add(
+              BagAddProduct(
+                context.read<ProductBloc>().state.product,
+                context.read<ProductBloc>().state.selectedQuantity,
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -101,50 +113,51 @@ class FoodDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
+    return BlocBuilder<ProductBloc, ProductState>(
+      builder: (context, state) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           topMargin,
           Text(
-            'Lasanha',
+            state.product.nome ?? '',
             style: MyTheme.typographyBlack.headline4.copyWith(fontWeight: FontWeight.w700),
           ),
           Text(
-            '500g',
+            '${state.product.peso}g',
             style: MyTheme.typographyBlack.subtitle1,
           ),
           spacing,
           Text(
-            'Contém: Molho de tomare, carne moída, queijo, presunto e molho branco.',
+            state.product.descricao ?? '',
             style: MyTheme.typographyBlack.default2,
           ),
           spacing,
           Text(
-            'Quantidade restante: 2',
+            'Quantidade restante: ${state.product.quantidade}',
             style: MyTheme.typographyBlack.headline6,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               QuantityInput(
-                onValueChanged: (value) => {},
+                onValueChanged: (value) => context.read<ProductBloc>().add(ProductSelectedQuantityChanged(value)),
+                maxValue: state.product.quantidade,
               ),
               Row(
                 children: [
                   Text(
-                    'R\$ 20,00',
+                    MyApplicationHelper.formatMoneyToBrWithPrefix(state.product.precoOriginal ?? 0),
                     style: MyTheme.typographyBlack.headline6.copyWith(decoration: TextDecoration.lineThrough),
                   ),
                   horizontalSpacing,
                   Text(
-                    'R\$ 10,00',
+                    MyApplicationHelper.formatMoneyToBrWithPrefix(state.product.precoPromocional ?? 0),
                     style: MyTheme.typographyBlack.headline2.copyWith(color: MyColors.primaryColor, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
             ],
-          )
+          ),
         ],
       ),
     );

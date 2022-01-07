@@ -17,12 +17,3 @@ class SessionInitial extends SessionEvent {
 }
 
 class SessionUserLogged extends SessionEvent {}
-
-class SessionSelectedStoreChanged extends SessionEvent {
-  const SessionSelectedStoreChanged(this.store);
-
-  final Store store;
-
-  @override
-  List<Object> get props => [store];
-}

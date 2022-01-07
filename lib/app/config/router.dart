@@ -4,6 +4,8 @@ import 'package:xepa/app/feature/navigation/ui/inner_page.dart';
 import 'package:xepa/app/feature/product/ui/product_page.dart';
 import 'package:xepa/app/feature/store/ui/store_page.dart';
 import 'package:xepa/app/feature/welcome/welcome_page.dart';
+import 'package:xepa/app/model/entity/barrel.dart';
+import 'package:xepa/app/model/entity/store.dart';
 
 class MyRouter {
   const MyRouter();
@@ -42,12 +44,20 @@ class MyRouter {
           case storeRoute:
             return MaterialPageRoute(
               settings: settings,
-              builder: (_) => const StorePage(),
+              builder: (_) {
+                Store store = settings.arguments as Store;
+                return StorePage(store: store);
+              },
             );
           case productRoute:
             return MaterialPageRoute(
               settings: settings,
-              builder: (_) => const ProductPage(),
+              builder: (_) {
+                List arguments = settings.arguments as List;
+                Product product = arguments[0] as Product;
+                Store store = arguments[1] as Store;
+                return ProductPage(product: product, store: store);
+              },
             );
           default:
             return defaultRoute();

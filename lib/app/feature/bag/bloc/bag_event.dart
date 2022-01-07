@@ -1,5 +1,4 @@
-import 'package:equatable/equatable.dart';
-import 'package:xepa/app/model/entity/product.dart';
+part of 'bag_bloc.dart';
 
 abstract class BagEvent extends Equatable {
   const BagEvent();
@@ -9,9 +8,10 @@ abstract class BagEvent extends Equatable {
 }
 
 class BagAddProduct extends BagEvent {
-  const BagAddProduct(this.product);
+  const BagAddProduct(this.product, this.quantity);
 
   final Product product;
+  final int quantity;
   @override
-  List<Object> get props => [product];
+  List<Object> get props => [product, quantity];
 }
