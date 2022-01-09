@@ -6,7 +6,7 @@ class BagState extends Equatable {
     this.total = 0.0,
   ]);
 
-  final List<Product> products;
+  final List<BagProduct> products;
   final double total;
 
   @override

@@ -1,31 +1,79 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:xepa/app/model/entity/bag_product.dart';
 import 'package:xepa/app/model/entity/product.dart';
 
 part 'bag_event.dart';
+
 part 'bag_state.dart';
 
 class BagBloc extends Bloc<BagEvent, BagState> {
-  BagBloc() : super(const BagState()){
+  BagBloc() : super(const BagState()) {
     on<BagEvent>(_onEvent);
   }
 
   void _onEvent(BagEvent event, Emitter<BagState> emit) {
     if (event is BagAddProduct) return _onBagAddProduct(event, emit);
+    if (event is BagProductQuantityChanged) return _onBagProductQuantityChanged(event, emit);
+    if (event is BagProductRemoved) return _onBagProductRemoved(event, emit);
   }
 
   void _onBagAddProduct(
     BagAddProduct event,
     Emitter<BagState> emit,
   ) {
-    List<Product> products = state.products.isEmpty ? [] : state.products;
-    products.add(event.product);
+    List<BagProduct> products = state.products.isEmpty ? [] : state.products;
 
-    double total = 10.0;
+    bool notAdded = true;
+    for (var el in products) {
+      if (el.id == event.product.id) notAdded = false;
+    }
 
-    emit(BagState(products = products, total = total),
-    );
+    if (notAdded) {
+      products.add(BagProduct(
+        id: event.product.id ?? '',
+        descricao: event.product.descricao ?? '',
+        idEstabelecimento: event.product.idEstabelecimento ?? '',
+        imagem: event.product.imagem ?? '',
+        nome: event.product.nome ?? '',
+        precoOriginal: event.product.precoOriginal ?? 0,
+        precoPromocional: event.product.precoPromocional ?? 0,
+        quantidade: event.quantity,
+        tipo: event.product.descricao ?? '',
+      ));
+    }
+
+    double total = products.fold(0, (p, BagProduct c) => p + (c.precoPromocional * c.quantidade));
+
+    emit(BagState(products = products, total = total));
   }
 
-  // double calculateTotalFromProducts(List<Product> products) => products.fold(0, (p, Product c) => p + (c.precoPromocional * (c.quantidade ?? 0)));
+  void _onBagProductQuantityChanged(
+    BagProductQuantityChanged event,
+    Emitter<BagState> emit,
+  ) {
+    List<BagProduct> products = state.products;
+
+    for (var el in products) {
+      if (el.id == event.product.id) {
+        el.quantidade = event.quantity;
+      }
+    }
+
+    double total = products.fold(0, (p, BagProduct c) => p + (c.precoPromocional * c.quantidade));
+
+    emit(BagState(products = products, total = total));
+  }
+
+  void _onBagProductRemoved(
+    BagProductRemoved event,
+    Emitter<BagState> emit,
+  ) {
+    List<BagProduct> products = state.products;
+    products.removeWhere((el) => el.id == event.product.id);
+
+    double total = products.isEmpty ? 0 : products.fold(0, (p, BagProduct c) => p + (c.precoPromocional * c.quantidade));
+
+    emit(BagState(products = products, total = total));
+  }
 }

@@ -91,12 +91,13 @@ class Body extends StatelessWidget {
           ),
           MyButton(
             label: 'Adicionar',
-            onTap: () => BlocProvider.of<BagBloc>(context).add(
-              BagAddProduct(
-                context.read<ProductBloc>().state.product,
-                context.read<ProductBloc>().state.selectedQuantity,
-              ),
-            ),
+            onTap: () {
+              if (context.read<ProductBloc>().state.selectedQuantity > 0) {
+                BlocProvider.of<BagBloc>(context).add(
+                  BagAddProduct(context.read<ProductBloc>().state.product, context.read<ProductBloc>().state.selectedQuantity),
+                );
+              }
+            },
           ),
         ],
       ),

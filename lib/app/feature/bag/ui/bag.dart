@@ -1,9 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/feature/bag/bloc/bag_bloc.dart';
 import 'package:xepa/app/helper/application_helper.dart';
+import 'package:xepa/app/model/entity/bag_product.dart';
 import 'package:xepa/app/widget/widgets.dart';
 
 class Bag extends StatelessWidget {
@@ -31,19 +33,13 @@ class Bag extends StatelessWidget {
         spacing,
         Expanded(
           child: BlocBuilder<BagBloc, BagState>(
-            builder: (context, state) =>
-                Column(
-                  children: state.products
-                      .map(
-                        (e) =>
-                        BagItem(
-                          name: e.nome ?? '',
-                          image: e.imagem ?? '',
-                          price: e.precoPromocional ?? 0,
-                        ),
+            builder: (context, state) => Column(
+              children: state.products
+                  .map(
+                    (e) => BagItem(product: e),
                   )
-                      .toList(),
-                ),
+                  .toList(),
+            ),
           ),
         ),
         const Summary(),
@@ -53,70 +49,84 @@ class Bag extends StatelessWidget {
 }
 
 class BagItem extends StatelessWidget {
-  const BagItem({Key? key, required this.name, required this.image, required this.price}) : super(key: key);
+  const BagItem({Key? key, required this.product}) : super(key: key);
 
-  final String name;
-  final String image;
-  final double price;
+  final BagProduct product;
 
   final SizedBox spacing = const SizedBox(width: 10);
 
   @override
-  Widget build(BuildContext context) =>
-      Container(
-        margin: const EdgeInsets.only(bottom: 10),
-        padding: MySizes.mainHorizontalEdgeInsets,
-        height: Device().screenHeight * .07,
-        child: Row(
-          children: [
-            Expanded(
-              child: Row(
-                children: [
-                  Flexible(
-                    flex: 1,
-                    child: Hero(
-                      tag: 'product-image',
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.grey,
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/lasanha.png'),
-                            fit: BoxFit.cover,
-                          ),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(10),
+  Widget build(BuildContext context) => Slidable(
+    key: const ValueKey(0),
+    startActionPane: ActionPane(
+      motion: const ScrollMotion(),
+      dismissible: DismissiblePane(onDismissed: () => context.read<BagBloc>().add(BagProductRemoved(product))),
+      children: [
+        SlidableAction(
+          onPressed: (context) => context.read<BagBloc>().add(BagProductRemoved(product)),
+          backgroundColor:  Colors.transparent,
+          foregroundColor: MyColors.red,
+          icon: Icons.delete,
+          label: 'Delete',
+        ),
+      ],
+    ),
+    child: Container(
+          margin: const EdgeInsets.only(bottom: 10),
+          padding: MySizes.mainHorizontalEdgeInsets,
+          height: Device().screenHeight * .07,
+          child: Row(
+            children: [
+              Expanded(
+                child: Row(
+                  children: [
+                    Flexible(
+                      flex: 1,
+                      child: Hero(
+                        tag: 'product-image',
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            image: DecorationImage(
+                              image: MyApplicationHelper.parseImg(product.imagem),
+                              fit: BoxFit.cover,
+                            ),
+                            borderRadius: const BorderRadius.all(
+                              Radius.circular(10),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  spacing,
-                  Flexible(
-                    flex: 2,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          name,
-                          style: MyTheme.typographyBlack.default1,
-                        ),
-                        Text(
-                          MyApplicationHelper.formatMoneyToBrWithPrefix(price),
-                          style: MyTheme.typographyBlack.headline6.copyWith(color: MyColors.primaryColor, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                    spacing,
+                    Flexible(
+                      flex: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            product.nome,
+                            style: MyTheme.typographyBlack.default1,
+                          ),
+                          Text(
+                            MyApplicationHelper.formatMoneyToBrWithPrefix(product.precoPromocional * product.quantidade),
+                            style: MyTheme.typographyBlack.headline6.copyWith(color: MyColors.primaryColor, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            QuantityInput(
-              onValueChanged: (value) => {},
-            ),
-          ],
+              QuantityInput(
+                initialValue: product.quantidade,
+                onValueChanged: (value) => context.read<BagBloc>().add(BagProductQuantityChanged(product, value)),
+              ),
+            ],
+          ),
         ),
-      );
+  );
 }
 
 class Summary extends StatelessWidget {
@@ -146,13 +156,12 @@ class Summary extends StatelessWidget {
           ),
           spacing,
           BlocBuilder<BagBloc, BagState>(
-            builder: (context, state) =>
-                SummaryItem(
-                  label: 'Valor',
-                  value: MyApplicationHelper.formatMoneyToBrWithPrefix(state.total),
-                  iconData: Icons.monetization_on_outlined,
-                  valueStyle: MyTheme.typographyBlack.headline4.copyWith(color: MyColors.primaryColor, fontWeight: FontWeight.bold),
-                ),
+            builder: (context, state) => SummaryItem(
+              label: 'Valor',
+              value: MyApplicationHelper.formatMoneyToBrWithPrefix(state.total),
+              iconData: Icons.monetization_on_outlined,
+              valueStyle: MyTheme.typographyBlack.headline4.copyWith(color: MyColors.primaryColor, fontWeight: FontWeight.bold),
+            ),
           ),
           BlocBuilder<BagBloc, BagState>(
             builder: (context, state) => const SummaryItem(
@@ -168,7 +177,6 @@ class Summary extends StatelessWidget {
     );
   }
 }
-
 
 class SummaryItem extends StatelessWidget {
   const SummaryItem({Key? key, required this.label, required this.value, required this.iconData, this.valueStyle}) : super(key: key);

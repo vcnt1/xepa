@@ -15,3 +15,20 @@ class BagAddProduct extends BagEvent {
   @override
   List<Object> get props => [product, quantity];
 }
+
+class BagProductQuantityChanged extends BagEvent {
+  const BagProductQuantityChanged(this.product, this.quantity);
+
+  final BagProduct product;
+  final int quantity;
+  @override
+  List<Object> get props => [product, quantity];
+}
+
+class BagProductRemoved extends BagEvent {
+  const BagProductRemoved(this.product);
+
+  final BagProduct product;
+  @override
+  List<Object> get props => [product];
+}
