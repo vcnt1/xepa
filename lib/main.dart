@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:device_preview/device_preview.dart';
 
+import 'dart:async';
+
 import 'package:xepa/app/config/config.dart';
 import 'app/feature/navigation/ui/outter_page.dart';
 

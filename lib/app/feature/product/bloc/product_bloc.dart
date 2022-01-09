@@ -5,7 +5,6 @@ import 'package:xepa/app/model/entity/barrel.dart';
 import 'package:xepa/app/model/entity/product.dart';
 
 part 'product_event.dart';
-
 part 'product_state.dart';
 
 class ProductBloc extends Bloc<ProductEvent, ProductState> {

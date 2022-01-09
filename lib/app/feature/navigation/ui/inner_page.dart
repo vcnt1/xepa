@@ -59,10 +59,19 @@ class MyBottomNavigationBar extends StatefulWidget {
 class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   int _selectedIndex = 0;
 
+  List<String> routes = [MyRouter.homeRoute, '', MyRouter.ordersRoute, MyRouter.profileRoute];
   void _onItemTapped(int index) {
+    if([1,3].contains(index)){
+      return;
+    }
+
     setState(() {
       _selectedIndex = index;
     });
+
+    if(routes[index] != '') {
+      innerNavigator.currentState?.pushNamed(routes[index]);
+    }
   }
   @override
   Widget build(BuildContext context) {

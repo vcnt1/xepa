@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:xepa/app/feature/home/ui/home_page.dart';
 import 'package:xepa/app/feature/navigation/ui/inner_page.dart';
+import 'package:xepa/app/feature/order/ui/order_detail_page.dart';
+import 'package:xepa/app/feature/order/ui/orders_page.dart';
 import 'package:xepa/app/feature/product/ui/product_page.dart';
+import 'package:xepa/app/feature/profile/ui/profile_page.dart';
 import 'package:xepa/app/feature/store/ui/store_page.dart';
 import 'package:xepa/app/feature/welcome/welcome_page.dart';
 import 'package:xepa/app/model/entity/barrel.dart';
@@ -31,6 +34,9 @@ class MyRouter {
   };
 
   static const String homeRoute = '/home';
+  static const String ordersRoute = '/orders';
+  static const String orderDetailRoute = '/order';
+  static const String profileRoute = '/profile';
   static const String storeRoute = '/store';
   static const String productRoute = '/product';
 
@@ -58,6 +64,21 @@ class MyRouter {
                 Store store = arguments[1] as Store;
                 return ProductPage(product: product, store: store);
               },
+            );
+          case ordersRoute:
+            return MaterialPageRoute(
+              settings: settings,
+              builder: (_) => const OrdersPage(),
+            );
+          case orderDetailRoute:
+            return MaterialPageRoute(
+              settings: settings,
+              builder: (_) => const OrderDetailPage(),
+            );
+          case profileRoute:
+            return MaterialPageRoute(
+              settings: settings,
+              builder: (_) => const ProfilePage(),
             );
           default:
             return defaultRoute();

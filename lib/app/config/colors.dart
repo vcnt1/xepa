@@ -4,7 +4,7 @@ class MyColors {
   const MyColors();
 
   static Color get primaryColor => const Color(0xFFF27523);
-  static Color get backgroundColor => const Color(0xFFFFF7F1);
+  static Color get backgroundColor => const Color(0xFFFFFBF8);
   static Color get statusBar => const Color(0xFFD66821);
 
   static Color get red => Colors.red;
