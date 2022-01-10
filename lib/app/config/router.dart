@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:xepa/app/feature/home/ui/home_page.dart';
 import 'package:xepa/app/feature/navigation/ui/inner_page.dart';
-import 'package:xepa/app/feature/order/ui/order_detail_page.dart';
 import 'package:xepa/app/feature/order/ui/orders_page.dart';
+import 'package:xepa/app/feature/order_detail/ui/order_detail_page.dart';
 import 'package:xepa/app/feature/product/ui/product_page.dart';
 import 'package:xepa/app/feature/profile/ui/profile_page.dart';
 import 'package:xepa/app/feature/store/ui/store_page.dart';
@@ -73,7 +73,10 @@ class MyRouter {
           case orderDetailRoute:
             return MaterialPageRoute(
               settings: settings,
-              builder: (_) => const OrderDetailPage(),
+              builder: (_) {
+                String orderId = settings.arguments as String;
+                return OrderDetailPage(orderId: orderId);
+              },
             );
           case profileRoute:
             return MaterialPageRoute(

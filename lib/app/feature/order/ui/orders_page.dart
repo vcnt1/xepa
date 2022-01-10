@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/feature/order/bloc/order_bloc.dart';
+import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
+import 'package:xepa/app/helper/application_helper.dart';
 import 'package:xepa/app/model/entity/order.dart';
 import 'package:xepa/app/repository/user_repository.dart';
 import 'package:xepa/app/widget/widgets.dart';
@@ -14,25 +16,29 @@ class OrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => OrderBloc(userRepository: context.read<UserRepository>())..add(OrderFetchData()),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(MySizes.mainHorizontalMargin),
-            child: MyAppBar(
-              color: MyColors.primaryColor,
+    return BlocBuilder<SessionBloc, SessionState>(
+      builder: (context, state) => state.status != SessionStatus.authenticated
+          ? const OrdersMissingAuthentication()
+          : BlocProvider(
+              create: (context) => OrderBloc(userRepository: context.read<UserRepository>())..add(OrderFetchData()),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(MySizes.mainHorizontalMargin),
+                    child: MyAppBar(
+                      color: MyColors.primaryColor,
+                    ),
+                  ),
+                  const Expanded(
+                    child: SingleChildScrollView(
+                      child: Body(),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          const Expanded(
-            child: SingleChildScrollView(
-              child: Body(),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
@@ -70,21 +76,18 @@ class OrdersList extends StatelessWidget {
             style: MyTheme.typographyBlack.headline4.copyWith(fontWeight: FontWeight.w700),
           ),
           spacing,
-          OrderItem(
-            order: Order(),
-          )
-          // BlocBuilder<HomeBloc, HomeState>(
-          //   builder: (context, state) => state.status == FetchStatus.loading
-          //       ? const CircularProgressIndicator()
-          //       : state.stores.isEmpty
-          //       ? const Text('No stores available')
-          //       : Column(
-          //     crossAxisAlignment: CrossAxisAlignment.start,
-          //     children: state.stores
-          //         .map((store) => StoreItem(store: store))
-          //         .toList(),
-          //   ),
-          // ),
+          BlocBuilder<OrderBloc, OrderState>(
+            builder: (context, state) => state.status == FetchStatus.loading
+                ? const CircularProgressIndicator()
+                : state.orders.isEmpty
+                ? const Text('No orders available')
+                : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: state.orders
+                  .map((order) => OrderItem(order: order))
+                  .toList(),
+            ),
+          ),
         ],
       ),
     );
@@ -101,20 +104,21 @@ class OrderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: () => Navigator.of(context).pushNamed(MyRouter.orderDetailRoute),
+        onTap: () => Navigator.of(context).pushNamed(MyRouter.orderDetailRoute, arguments: order.id),
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(color: MyColors.grey5, width: 2.0),
             borderRadius: const BorderRadius.all(Radius.circular(10)),
           ),
           padding: const EdgeInsets.all(15),
+          margin: const EdgeInsets.only(bottom: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Terça, 07 de dezembro de 2021'),
+                  Text(MyApplicationHelper.phraseDateFormat(order.updatedAt) ?? ''),
                   Icon(
                     Icons.keyboard_arrow_right_outlined,
                     color: MyColors.primaryColor,
@@ -127,29 +131,32 @@ class OrderItem extends StatelessWidget {
                   Container(
                     width: Device().screenHeight * .05,
                     height: Device().screenHeight * .05,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Colors.grey,
                       image: DecorationImage(
-                        image: AssetImage('assets/images/dueto-logo.png'),
+                        image: MyApplicationHelper.parseImg(order.estabelecimentos.imagem ?? ''),
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(10),
                       ),
                     ),
                   ),
                   spacing,
                   Text(
-                    'Duetto Pizzaria',
+                    order.estabelecimentos.nome ?? '',
                     style: MyTheme.typographyBlack.headline5,
                   )
                 ],
               ),
               verticalSpacing,
-              const Text('1 lasanha'),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: order.produtos.map((e) => Text('${e.compraProduto.quantidade} ${e.nome}'),).toList(),
+              ),
               verticalSpacing,
               Text(
-                'Pedido em andamento - Nº 12312341',
+                'Pedido em andamento - Nº ${order.id}',
                 style: MyTheme.typographyBlack.headline6.copyWith(
                   color: MyColors.primaryColor,
                 ),
@@ -158,4 +165,13 @@ class OrderItem extends StatelessWidget {
           ),
         ),
       );
+}
+
+class OrdersMissingAuthentication extends StatelessWidget {
+  const OrdersMissingAuthentication({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
 }

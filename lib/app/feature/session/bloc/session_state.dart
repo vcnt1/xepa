@@ -1,20 +1,22 @@
 part of 'session_bloc.dart';
 
 class SessionState extends Equatable {
-  SessionState({
-    required this.currentUser,
+  const SessionState._({
+    this.status = SessionStatus.unknown,
+    this.user = User.empty,
   });
 
-  final String currentUser;
+  const SessionState.unknown() : this._();
 
-  SessionState copyWith({
-    String? currentUser,
-    Store? selectedStore,
-  }) =>
-      SessionState(
-        currentUser: currentUser ?? this.currentUser,
-      );
+  const SessionState.authenticated(User user)
+      : this._(status: SessionStatus.authenticated, user: user);
+
+  const SessionState.unauthenticated()
+      : this._(status: SessionStatus.unauthenticated);
+
+  final SessionStatus status;
+  final User user;
 
   @override
-  List<Object> get props => [currentUser];
+  List<Object> get props => [status, user];
 }

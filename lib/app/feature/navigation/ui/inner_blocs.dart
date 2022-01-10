@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/feature/bag/bloc/bag_bloc.dart';
 import 'package:xepa/app/feature/home/bloc/home_bloc.dart';
+import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
 import 'package:xepa/app/repository/store_repository.dart';
+import 'package:xepa/app/repository/user_repository.dart';
 
 class MyBlocs extends StatelessWidget {
   const MyBlocs({Key? key, required this.child}) : super(key: key);
@@ -13,7 +15,10 @@ class MyBlocs extends StatelessWidget {
   Widget build(BuildContext context) => MultiBlocProvider(
       providers: [
         BlocProvider<BagBloc>(
-          create: (BuildContext context) => BagBloc(),
+          create: (BuildContext context) => BagBloc(
+            sessionBloc: context.read<SessionBloc>(),
+            userRepository: context.read<UserRepository>(),
+          ),
         ),
         BlocProvider<HomeBloc>(
           create: (BuildContext context) => HomeBloc(

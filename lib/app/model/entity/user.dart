@@ -9,20 +9,22 @@ User userFromJson(String str) => User.fromJson(json.decode(str));
 String userToJson(User data) => json.encode(data.toJson());
 
 class User {
-  User({
+  const User({
     required this.id,
     required this.nome,
     required this.email,
-    required this.senha,
+    this.senha,
     required this.tipo,
     this.updatedAt,
     this.createdAt,
   });
 
+  static const empty = User(id: '', nome: '', email: '', senha: '', tipo: '');
+
   final String id;
   final String nome;
   final String email;
-  final String senha;
+  final String? senha;
   final String tipo;
   final DateTime? updatedAt;
   final DateTime? createdAt;

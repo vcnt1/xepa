@@ -5,7 +5,6 @@ import 'package:xepa/app/model/entity/barrel.dart';
 import 'package:xepa/app/repository/user_repository.dart';
 
 part 'order_event.dart';
-
 part 'order_state.dart';
 
 class OrderBloc extends Bloc<OrderEvent, OrderState> {
@@ -27,7 +26,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
   ) async {
     emit(OrderState(status: FetchStatus.loading));
 
-    Entity<List<Order>> res = await _userRepository.fetchOrders('0c160030-5c45-11ec-8b9d-07c49bb26317');
+    Entity<List<Order>> res = await _userRepository.fetchOrders();
 
     if (res.error != null) {
       emit(OrderState(status: FetchStatus.error));

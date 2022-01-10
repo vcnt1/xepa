@@ -89,11 +89,19 @@ class MyApplicationHelper {
   static String formatJsonArray(String value) {
     var val = json.decode(value);
 
-    if([val['result'], val['result']['rows']].contains(null)){
-      return val;
+    if(val['result'] == null){
+      return value;
     }
 
-    return json.encode(val['result']['rows']);
+    if(val['result']['rows'] != null){
+      return json.encode(val['result']['rows']);
+    }
+
+    if(val['result'] != null){
+      return json.encode(val['result']);
+    }
+
+    return value;
   }
 
   static const _daysInMonth = const [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -142,6 +150,7 @@ class MyApplicationHelper {
   }
 
   static ImageProvider parseImg(String image) {
+    if(image == '') return const AssetImage('assets/images/dueto-logo.png');
     try {
       final img = imageFromBase64String(image);
       return img.image;

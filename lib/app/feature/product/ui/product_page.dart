@@ -94,7 +94,11 @@ class Body extends StatelessWidget {
             onTap: () {
               if (context.read<ProductBloc>().state.selectedQuantity > 0) {
                 BlocProvider.of<BagBloc>(context).add(
-                  BagAddProduct(context.read<ProductBloc>().state.product, context.read<ProductBloc>().state.selectedQuantity),
+                  BagAddProduct(
+                    context.read<ProductBloc>().state.store,
+                    context.read<ProductBloc>().state.product,
+                    context.read<ProductBloc>().state.selectedQuantity,
+                  ),
                 );
               }
             },

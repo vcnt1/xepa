@@ -24,7 +24,7 @@ class Network {
   Map<String, String> get authHeader => Map<String, String>.from(_authHeader);
 
   void setAuthHeader() {
-    // _authHeader[HttpHeaders.authorizationHeader] = TOKEN;
+    _authHeader[HttpHeaders.authorizationHeader] = 'bearer $TOKEN';
     _authHeader[HttpHeaders.contentTypeHeader] = 'application/json';
   }
 

@@ -7,13 +7,23 @@ abstract class SessionEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class SessionInitial extends SessionEvent {
-  const SessionInitial(this.user);
+class SessionStatusChanged extends SessionEvent {
+  const SessionStatusChanged(this.status);
 
-  final String user;
+  final SessionStatus status;
+
+  @override
+  List<Object> get props => [status];
+}
+
+class SessionUserAuthenticated extends SessionEvent {
+  const SessionUserAuthenticated(this.user);
+
+  final User user;
 
   @override
   List<Object> get props => [user];
 }
 
-class SessionUserLogged extends SessionEvent {}
+
+class SessionLogoutRequested extends SessionEvent {}

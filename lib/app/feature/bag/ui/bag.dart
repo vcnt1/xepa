@@ -57,21 +57,21 @@ class BagItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Slidable(
-    key: const ValueKey(0),
-    startActionPane: ActionPane(
-      motion: const ScrollMotion(),
-      dismissible: DismissiblePane(onDismissed: () => context.read<BagBloc>().add(BagProductRemoved(product))),
-      children: [
-        SlidableAction(
-          onPressed: (context) => context.read<BagBloc>().add(BagProductRemoved(product)),
-          backgroundColor:  Colors.transparent,
-          foregroundColor: MyColors.red,
-          icon: Icons.delete,
-          label: 'Delete',
+        key: const ValueKey(0),
+        startActionPane: ActionPane(
+          motion: const ScrollMotion(),
+          dismissible: DismissiblePane(onDismissed: () => context.read<BagBloc>().add(BagProductRemoved(product))),
+          children: [
+            SlidableAction(
+              onPressed: (context) => context.read<BagBloc>().add(BagProductRemoved(product)),
+              backgroundColor: Colors.transparent,
+              foregroundColor: MyColors.red,
+              icon: Icons.delete,
+              label: 'Delete',
+            ),
+          ],
         ),
-      ],
-    ),
-    child: Container(
+        child: Container(
           margin: const EdgeInsets.only(bottom: 10),
           padding: MySizes.mainHorizontalEdgeInsets,
           height: Device().screenHeight * .07,
@@ -126,7 +126,7 @@ class BagItem extends StatelessWidget {
             ],
           ),
         ),
-  );
+      );
 }
 
 class Summary extends StatelessWidget {
@@ -164,14 +164,26 @@ class Summary extends StatelessWidget {
             ),
           ),
           BlocBuilder<BagBloc, BagState>(
-            builder: (context, state) => const SummaryItem(
+            builder: (context, state) => SummaryItem(
               label: 'Endereço para retirada',
-              value: 'Rua Porto alegre, 1227, Henrique Jorge - Fortaleza Ce',
+              value: state.store == null
+                  ? '-'
+                  : '${state.store!.logradouro}, ${state.store!.numero} - ${state.store!.bairro}, ${state.store!.localidade} - ${state.store!.uf}',
               iconData: Icons.map_outlined,
             ),
           ),
           spacing,
-          MyButton(onTap: () {}, label: 'Finalizar Pedido'),
+          BlocBuilder<BagBloc, BagState>(
+            builder: (context, state) => MyButton(
+              label: 'Finalizar Pedido',
+              child: state.fetchStatus == FetchStatus.loading ? const CircularProgressIndicator() : null,
+              onTap: () {
+                // if(![FetchStatus.loading, FetchStatus.success].contains(state.fetchStatus)) {
+                  context.read<BagBloc>().add(BagOrderRequested());
+                // }
+              },
+            ),
+          ),
         ],
       ),
     );

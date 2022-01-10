@@ -139,7 +139,8 @@ class StoreItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) => GestureDetector(
         onTap: () => Navigator.of(context).pushNamed(MyRouter.storeRoute, arguments: store),
-        child: SizedBox(
+        child: Container(
+          margin: const EdgeInsets.only(bottom: 10),
           height: Device().screenHeight * .1,
           child: Row(
             children: [
