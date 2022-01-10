@@ -41,8 +41,8 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate
         ],
         theme: MyTheme.light,
-        builder: !isRelease ? null : DevicePreview.appBuilder,
-        locale: !isRelease ? null : DevicePreview.locale(context),
+        builder: Device.currentBuildMode() == BuildMode.profile ? DevicePreview.appBuilder : null,
+        locale: Device.currentBuildMode() == BuildMode.profile ? DevicePreview.locale(context) : null,
         home: SafeArea(
           child: OutterPage(),
         ),

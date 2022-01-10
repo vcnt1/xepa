@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
-import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
 import 'package:xepa/app/feature/store/bloc/store_bloc.dart';
 import 'package:xepa/app/helper/application_helper.dart';
 import 'package:xepa/app/model/entity/product.dart';
@@ -190,20 +189,24 @@ class FoodList extends StatelessWidget {
             style: MyTheme.typographyBlack.headline4.copyWith(fontWeight: FontWeight.w700),
           ),
           spacing,
-          BlocBuilder<StoreBloc, StoreState>(
-            builder: (context, state) => state.status == FetchStatus.loading
-                ? const CircularProgressIndicator()
-                : state.products.isEmpty
-                    ? Column(
-                        children: [
-                          const Text('No products available'),
-                          MyButton(onTap: () => context.read<StoreBloc>().add(StoreFetchProducts()), label: 'Procurar novamente'),
-                        ],
-                      )
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: state.products.map((e) => ProductItem(product: e)).toList(),
-                      ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: BlocBuilder<StoreBloc, StoreState>(
+                builder: (context, state) => state.status == FetchStatus.loading
+                    ? const CircularProgressIndicator()
+                    : state.products.isEmpty
+                        ? Column(
+                            children: [
+                              const Text('No products available'),
+                              MyButton(onTap: () => context.read<StoreBloc>().add(StoreFetchProducts()), label: 'Procurar novamente'),
+                            ],
+                          )
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: state.products.map((e) => ProductItem(product: e)).toList(),
+                          ),
+              ),
+            ),
           ),
         ],
       ),

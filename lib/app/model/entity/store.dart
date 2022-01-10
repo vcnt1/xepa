@@ -25,6 +25,11 @@ class Store {
     this.complemento,
     this.numero,
     this.telefone,
+    this.totalProdutos,
+    this.mediaDescontos,
+    this.valorDescontos,
+    this.horaAbre,
+    this.horaFecha,
     this.createdAt,
     this.updatedAt,
   });
@@ -42,6 +47,11 @@ class Store {
   final String? complemento;
   final String? numero;
   final String? telefone;
+  final int? totalProdutos;
+  final double? mediaDescontos;
+  final int? valorDescontos;
+  final String? horaAbre;
+  final String? horaFecha;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -59,6 +69,11 @@ class Store {
     complemento: json["Complemento"],
     numero: json["Numero"],
     telefone: json["Telefone"],
+    totalProdutos: json["TotalProdutos"],
+    mediaDescontos: json["MediaDescontos"].toDouble(),
+    valorDescontos: json["ValorDescontos"],
+    horaAbre: json["HoraAbre"],
+    horaFecha: json["HoraFecha"],
     createdAt: DateTime.parse(json["createdAt"]),
     updatedAt: DateTime.parse(json["updatedAt"]),
   );
@@ -77,6 +92,11 @@ class Store {
     "Complemento": complemento,
     "Numero": numero,
     "Telefone": telefone,
+    "TotalProdutos": totalProdutos,
+    "MediaDescontos": mediaDescontos,
+    "ValorDescontos": valorDescontos,
+    "HoraAbre": horaAbre,
+    "HoraFecha": horaFecha,
     "createdAt": createdAt?.toIso8601String(),
     "updatedAt": updatedAt?.toIso8601String(),
   };

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/feature/login/ui/login_modal.dart';
 import 'package:xepa/app/feature/signin/ui/signin_modal.dart';
@@ -13,7 +12,15 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        color: MyColors.primaryColor,
+        height: Device().screenHeight,
+        width: Device().screenWidth,
+        decoration: BoxDecoration(
+          color: MyColors.primaryColor,
+          image: const DecorationImage(
+            image: AssetImage('assets/images/welcome-madson.png'),
+            fit: BoxFit.fitWidth,
+          ),
+        ),
         child: Padding(
           padding: MySizes.alternativeEdgeInsets,
           child: Column(

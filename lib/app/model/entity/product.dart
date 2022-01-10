@@ -21,8 +21,11 @@ class Product {
     this.data,
     this.peso,
     this.precoOriginal,
+    this.desconto,
     this.precoPromocional,
     this.quantidade,
+    this.StartTime,
+    this.EndTime,
     this.createdAt,
     this.updatedAt,
   });
@@ -35,9 +38,12 @@ class Product {
   final String? tipo;
   final DateTime? data;
   final int? peso;
+  final double? desconto;
   final double? precoOriginal;
   final double? precoPromocional;
   final int? quantidade;
+  final DateTime? StartTime;
+  final DateTime? EndTime;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -50,11 +56,14 @@ class Product {
     tipo: json["Tipo"],
     data: DateTime.parse(json["Data"]),
     peso: json["Peso"],
+    desconto: json["Desconto"]?.toDouble(),
     precoOriginal: json["Preco_Original"].toDouble(),
     precoPromocional: json["Preco_Promocional"].toDouble(),
     quantidade: json["Quantidade"],
-    createdAt: DateTime.parse(json["createdAt"]),
-    updatedAt: DateTime.parse(json["updatedAt"]),
+    StartTime: json["StartTime"] == null ? json["StartTime"] : DateTime.parse(json["StartTime"]),
+    EndTime: json["EndTime"] == null ? json["EndTime"] : DateTime.parse(json["EndTime"]),
+    createdAt: DateTime.parse(json["createdAt"] ?? ''),
+    updatedAt: DateTime.parse(json["updatedAt"] ?? ''),
   );
 
   Map<String, dynamic> toJson() => {
@@ -66,9 +75,12 @@ class Product {
     "Tipo": tipo,
     "Data": data?.toIso8601String(),
     "Peso": peso,
+    "Desconto": desconto,
     "Preco_Original": precoOriginal,
     "Preco_Promocional": precoPromocional,
     "Quantidade": quantidade,
+    "StartTime": createdAt?.toIso8601String(),
+    "EndTime": createdAt?.toIso8601String(),
     "createdAt": createdAt?.toIso8601String(),
     "updatedAt": updatedAt?.toIso8601String(),
   };
