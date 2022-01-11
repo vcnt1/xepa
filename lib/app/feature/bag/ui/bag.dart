@@ -4,6 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/feature/bag/bloc/bag_bloc.dart';
+import 'package:xepa/app/feature/navigation/ui/inner_page.dart';
+import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
+import 'package:xepa/app/feature/session/ui/popup_login.dart';
 import 'package:xepa/app/helper/application_helper.dart';
 import 'package:xepa/app/model/entity/bag_product.dart';
 import 'package:xepa/app/widget/widgets.dart';
@@ -15,35 +18,43 @@ class Bag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        spacing,
-        Padding(
-          padding: const EdgeInsets.all(MySizes.mainHorizontalMargin),
-          child: MyAppBar(
-            showBackButton: true,
-            hideBagButton: true,
-            middleElement: Center(
-              child: Text('Sacola', style: MyTheme.typographyBlack.headline4),
-            ),
-            color: MyColors.primaryColor,
-          ),
-        ),
-        spacing,
-        Expanded(
-          child: BlocBuilder<BagBloc, BagState>(
-            builder: (context, state) => Column(
-              children: state.products
-                  .map(
-                    (e) => BagItem(product: e),
-                  )
-                  .toList(),
+    return BlocListener<BagBloc, BagState>(
+      listener: (context, state) {
+        if (state.fetchStatus == FetchStatus.success && state.orderId != null) {
+          Navigator.of(context).pop();
+          innerNavigator.currentState?.pushNamed(MyRouter.orderDetailRoute, arguments: state.orderId);
+        }
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          spacing,
+          Padding(
+            padding: const EdgeInsets.all(MySizes.mainHorizontalMargin),
+            child: MyAppBar(
+              showBackButton: true,
+              hideBagButton: true,
+              middleElement: Center(
+                child: Text('Sacola', style: MyTheme.typographyBlack.headline4),
+              ),
+              color: MyColors.primaryColor,
             ),
           ),
-        ),
-        const Summary(),
-      ],
+          spacing,
+          Expanded(
+            child: BlocBuilder<BagBloc, BagState>(
+              builder: (context, state) => Column(
+                children: state.products
+                    .map(
+                      (e) => BagItem(product: e),
+                    )
+                    .toList(),
+              ),
+            ),
+          ),
+          const Summary(),
+        ],
+      ),
     );
   }
 }
@@ -173,15 +184,31 @@ class Summary extends StatelessWidget {
             ),
           ),
           spacing,
-          BlocBuilder<BagBloc, BagState>(
-            builder: (context, state) => MyButton(
-              label: 'Finalizar Pedido',
-              child: state.fetchStatus == FetchStatus.loading ? const CircularProgressIndicator() : null,
-              onTap: () {
-                // if(![FetchStatus.loading, FetchStatus.success].contains(state.fetchStatus)) {
-                  context.read<BagBloc>().add(BagOrderRequested());
-                // }
-              },
+          BlocBuilder<SessionBloc, SessionState>(
+            builder: (context, sessionState) => BlocBuilder<BagBloc, BagState>(
+              builder: (context, bagState) => MyButton(
+                label: 'Finalizar Pedido',
+                child: bagState.fetchStatus == FetchStatus.loading ? const CircularProgressIndicator() : null,
+                onTap: () {
+                  if (bagState.products.isNotEmpty) {
+                    if (sessionState.status == SessionStatus.authenticated) {
+                      // if(![FetchStatus.loading, FetchStatus.success].contains(state.fetchStatus)) {
+                      context.read<BagBloc>().add(BagOrderRequested());
+                    } else {
+                      showDialog(
+                        context: context,
+                        barrierDismissible: true,
+                        useRootNavigator: false,
+                        builder: (BuildContext context) => const AlertDialog(
+                          elevation: 0,
+                          backgroundColor: Colors.transparent,
+                          content: PopUpLogin(),
+                        ),
+                      );
+                    }
+                  }
+                },
+              ),
             ),
           ),
         ],

@@ -8,6 +8,7 @@ import 'package:xepa/app/model/entity/entity.dart';
 import 'package:xepa/app/model/entity/user.dart';
 import 'package:xepa/app/model/error.dart';
 import 'package:xepa/app/model/service/login_response.dart';
+import 'package:xepa/app/model/service/sigin_response.dart';
 import 'package:xepa/app/service/user_service.dart';
 
 class UserRepository {
@@ -40,7 +41,7 @@ class UserRepository {
     }
   }
 
-  Future<Entity<User>> signIn({
+  Future<Entity<SiginResponse>> signIn({
     required String email,
     required String name,
     required String password,
@@ -55,10 +56,15 @@ class UserRepository {
     );
 
     try {
-      final user = userFromJson(res);
-      return Entity<User>(object: user);
+      final siginInResponse = siginResponseFromJson(res);
+
+      user = siginInResponse.result;
+      TOKEN = siginInResponse.token ?? '';
+      Network().setAuthHeader();
+
+      return Entity<SiginResponse>(object: siginInResponse);
     } catch (e) {
-      return Entity<User>(error: MyApplicationHelper.parseToMyError(res, ErrorType.invalidFormat));
+      return Entity<SiginResponse>(error: MyApplicationHelper.parseToMyError(res, ErrorType.invalidFormat));
     }
   }
 

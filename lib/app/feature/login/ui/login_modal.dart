@@ -3,6 +3,7 @@ import 'package:formz/formz.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/feature/login/bloc/login_bloc.dart';
 import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
+import 'package:xepa/app/feature/signin/ui/signin_modal.dart';
 import 'package:xepa/app/repository/user_repository.dart';
 import 'package:xepa/app/widget/widgets.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class LoginModal extends StatelessWidget {
           },
           child: BlocListener<LoginBloc, LoginState>(
             listener: (context, state) {
-              if(state.status.isSubmissionSuccess){
+              if (state.status.isSubmissionSuccess) {
                 Navigator.of(context).pop();
               }
             },
@@ -69,8 +70,8 @@ class LoginModal extends StatelessWidget {
                     labelText: 'SENHA',
                     key: const Key('password_input_login'),
                     onChanged: (password) => context.read<LoginBloc>().add(
-                      LoginPasswordChanged(password),
-                    ),
+                          LoginPasswordChanged(password),
+                        ),
                   ),
                 ),
                 spacing,
@@ -79,15 +80,31 @@ class LoginModal extends StatelessWidget {
                     label: 'Entrar',
                     child: state.status.isSubmissionInProgress ? const CircularProgressIndicator() : null,
                     onTap: () {
-                      if(state.status.isValidated) {
+                      if (state.status.isValidated) {
                         context.read<LoginBloc>().add(LoginSubmitted());
                       }
                     },
                   ),
                 ),
                 spacing,
+                GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).pop();
+                    showModalBottomSheet<void>(
+                      context: context,
+                      isScrollControlled: true,
+                      builder: (_) => const SigninModal(),
+                    );
+                  },
+                  child: Center(
+                    child: Text(
+                      'Quero criar conta',
+                      style: MyTheme.typographyBlack.label1.copyWith(fontSize: 14, decoration: TextDecoration.underline),
+                    ),
+                  ),
+                ),
+                spacing,
                 SizedBox(height: MediaQuery.of(context).viewInsets.bottom),
-                //TODO: REDEFINIR FEATURE
               ],
             ),
           ),

@@ -16,6 +16,7 @@ class MyButton extends StatelessWidget {
     buttonDecoration = BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(5.0),
+      border: Border.all(color: MyColors.grey5, width: 2),
     );
     labelStyle = MyTheme.typographyWhite.label1.copyWith(color: MyColors.primaryColor, fontSize: 14);
     highlightColor = MyColors.primaryColor;

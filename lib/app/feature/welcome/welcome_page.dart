@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/config/enums.dart';
 import 'package:xepa/app/feature/login/ui/login_modal.dart';
+import 'package:xepa/app/feature/navigation/ui/inner_page.dart';
 import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
 import 'package:xepa/app/feature/signin/ui/signin_modal.dart';
 import 'package:xepa/app/widget/widgets.dart';
@@ -16,7 +17,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => BlocListener<SessionBloc, SessionState>(
     listener: (context, state) {
-      if(state.status == SessionStatus.authenticated){
+      if(innerNavigator.currentState == null && state.status == SessionStatus.authenticated){
         Navigator.of(context).pushNamed(MyRouter.innerRoute);
       }
     },

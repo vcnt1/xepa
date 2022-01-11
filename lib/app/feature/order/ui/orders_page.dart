@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
+import 'package:xepa/app/feature/login/ui/login_modal.dart';
 import 'package:xepa/app/feature/order/bloc/order_bloc.dart';
 import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
+import 'package:xepa/app/feature/signin/ui/signin_modal.dart';
 import 'package:xepa/app/helper/application_helper.dart';
 import 'package:xepa/app/model/entity/order.dart';
 import 'package:xepa/app/repository/user_repository.dart';
@@ -16,29 +18,29 @@ class OrdersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SessionBloc, SessionState>(
-      builder: (context, state) => state.status != SessionStatus.authenticated
-          ? const OrdersMissingAuthentication()
-          : BlocProvider(
-              create: (context) => OrderBloc(userRepository: context.read<UserRepository>())..add(OrderFetchData()),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(MySizes.mainHorizontalMargin),
-                    child: MyAppBar(
-                      color: MyColors.primaryColor,
-                    ),
-                  ),
-                  const Expanded(
-                    child: SingleChildScrollView(
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(MySizes.mainHorizontalMargin),
+          child: MyAppBar(
+            color: MyColors.primaryColor,
+          ),
+        ),
+        Expanded(
+          child: BlocBuilder<SessionBloc, SessionState>(
+            builder: (context, state) => state.status != SessionStatus.authenticated
+                ? OrdersMissingAuthentication()
+                : BlocProvider(
+                    create: (context) => OrderBloc(userRepository: context.read<UserRepository>())..add(OrderFetchData()),
+                    child: const SingleChildScrollView(
                       child: Body(),
                     ),
                   ),
-                ],
-              ),
-            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -80,13 +82,11 @@ class OrdersList extends StatelessWidget {
             builder: (context, state) => state.status == FetchStatus.loading
                 ? const CircularProgressIndicator()
                 : state.orders.isEmpty
-                ? const Text('No orders available')
-                : Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: state.orders
-                  .map((order) => OrderItem(order: order))
-                  .toList(),
-            ),
+                    ? const Text('No orders available')
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: state.orders.map((order) => OrderItem(order: order)).toList(),
+                      ),
           ),
         ],
       ),
@@ -152,7 +152,11 @@ class OrderItem extends StatelessWidget {
               verticalSpacing,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: order.produtos.map((e) => Text('${e.compraProduto.quantidade} ${e.nome}'),).toList(),
+                children: order.produtos
+                    .map(
+                      (e) => Text('${e.compraProduto.quantidade} ${e.nome}'),
+                    )
+                    .toList(),
               ),
               verticalSpacing,
               Text(
@@ -168,10 +172,41 @@ class OrderItem extends StatelessWidget {
 }
 
 class OrdersMissingAuthentication extends StatelessWidget {
-  const OrdersMissingAuthentication({Key? key}) : super(key: key);
+  OrdersMissingAuthentication({Key? key}) : super(key: key);
+
+  SizedBox sectionSpacing = const SizedBox(height: 30);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      margin: EdgeInsets.all(MySizes.mainHorizontalMargin),
+      child: Column(
+        children: [
+          const Text('Essa é uma área restrita aos clientes cadastrados.'),
+          sectionSpacing,
+          Expanded(
+            child: Container(
+              decoration: const BoxDecoration(
+                image:  DecorationImage(
+                  image: AssetImage('assets/images/madsonHistoricoCriarCadastro.png'),
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
+            ),
+          ),
+          sectionSpacing,
+          const Text('Não fique de fora, basta clicar no botão abaixo para se tornar um Xepeiro você também!'),
+          sectionSpacing,
+          MyButton(
+            label: 'Faça parte',
+            onTap: () => showModalBottomSheet<void>(
+              context: context,
+              isScrollControlled: true,
+              builder: (_) => const LoginModal(),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

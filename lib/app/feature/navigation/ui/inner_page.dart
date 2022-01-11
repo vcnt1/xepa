@@ -35,10 +35,15 @@ class InnerPage extends StatelessWidget {
               width: Device().screenWidth,
               height: Device().screenHeight,
               color: MyColors.backgroundColor,
-              child: Navigator(
-                key: innerNavigator,
-                onGenerateRoute: MyRouter.inner,
-                initialRoute: MyRouter.homeRoute,
+              child: WillPopScope(
+                onWillPop: () async {
+                  return !(await innerNavigator.currentState!.maybePop());
+                },
+                child: Navigator(
+                  key: innerNavigator,
+                  onGenerateRoute: MyRouter.inner,
+                  initialRoute: MyRouter.homeRoute,
+                ),
               ),
             ),
             bottomNavigationBar: const MyBottomNavigationBar(),

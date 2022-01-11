@@ -1,21 +1,29 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
+import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
 import 'package:xepa/app/model/entity/barrel.dart';
 import 'package:xepa/app/model/input/barrel.dart';
+import 'package:xepa/app/model/service/login_response.dart';
+import 'package:xepa/app/model/service/sigin_response.dart';
 import 'package:xepa/app/repository/user_repository.dart';
 
 part 'signin_event.dart';
+
 part 'signin_state.dart';
 
 class SigninBloc extends Bloc<SigninEvent, SigninState> {
-  SigninBloc({required UserRepository userRepository})
-      : _userRepository = userRepository,
+  SigninBloc({
+    required SessionBloc sessionBloc,
+    required UserRepository userRepository,
+  })  : _userRepository = userRepository,
+        _sessionBloc = sessionBloc,
         super(const SigninState()) {
     on<SigninEvent>(_onEvent);
   }
 
   final UserRepository _userRepository;
+  final SessionBloc _sessionBloc;
 
   void _onEvent(SigninEvent event, Emitter<SigninState> emit) {
     if (event is SigninEmailChanged) return _onSigninEmailChanged(event, emit);
@@ -64,17 +72,18 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
     if (state.status.isValidated) {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
       try {
-        Entity<User> res = await _userRepository.signIn(
+        Entity<SiginResponse> res = await _userRepository.signIn(
           name: state.name.value,
           email: state.email.value,
           password: state.password.value,
         );
 
-        if(res.error != null){
+        if (res.error != null) {
           emit(state.copyWith(status: FormzStatus.submissionFailure));
           return;
         }
 
+        _sessionBloc.add(SessionUserAuthenticated(res.object?.result ?? User.empty));
         emit(state.copyWith(status: FormzStatus.submissionSuccess));
       } catch (_) {
         emit(state.copyWith(status: FormzStatus.submissionFailure));
