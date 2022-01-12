@@ -152,6 +152,8 @@ class MyApplicationHelper {
   static ImageProvider parseImg(String image) {
     if(image == '') return const AssetImage('assets/images/dueto-logo.png');
     if(image.contains('data:image/png;base64,')) image = image.replaceAll('data:image/png;base64,', '');
+    if(image.contains('data:image/jpeg;base64,')) image = image.replaceAll('data:image/jpeg;base64,', '');
+    if(image.contains('data:image/jpg;base64,')) image = image.replaceAll('data:image/jpg;base64,', '');
     try {
       final img = imageFromBase64String(image);
       return img.image;

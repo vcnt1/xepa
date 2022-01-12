@@ -59,7 +59,7 @@ class UserRepository {
       final siginInResponse = siginResponseFromJson(res);
 
       user = siginInResponse.result;
-      TOKEN = siginInResponse.token ?? '';
+      TOKEN = siginInResponse.token;
       Network().setAuthHeader();
 
       return Entity<SiginResponse>(object: siginInResponse);

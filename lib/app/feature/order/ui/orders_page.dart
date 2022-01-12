@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/feature/login/ui/login_modal.dart';
 import 'package:xepa/app/feature/order/bloc/order_bloc.dart';
@@ -160,7 +161,7 @@ class OrderItem extends StatelessWidget {
               ),
               verticalSpacing,
               Text(
-                'Pedido em andamento - Nº ${order.id}',
+                '${toBeginningOfSentenceCase(order.statusUsuario)} - Nº ${order.id}',
                 style: MyTheme.typographyBlack.headline6.copyWith(
                   color: MyColors.primaryColor,
                 ),
@@ -198,7 +199,7 @@ class OrdersMissingAuthentication extends StatelessWidget {
           const Text('Não fique de fora, basta clicar no botão abaixo para se tornar um Xepeiro você também!'),
           sectionSpacing,
           MyButton(
-            label: 'Faça parte',
+            label: 'Faça login',
             onTap: () => showModalBottomSheet<void>(
               context: context,
               isScrollControlled: true,

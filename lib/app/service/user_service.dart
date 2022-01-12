@@ -9,7 +9,7 @@ class UserService {
 
   static final String urlOrder = '$urlApi/compra';
   static final String urlFetchOrders = '$urlApi/compra/getall';
-  static const String queryString1 = '?type=“usuario”';
+  static const String queryString1 = '?type=usuario';
 
   Future<dynamic> signIn({required Map<String, String> body}) async => await _network.post(urlSignin, body: body);
 

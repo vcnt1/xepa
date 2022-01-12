@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/feature/bag/bloc/bag_bloc.dart';
@@ -17,6 +18,7 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int timeLeft = product.EndTime == null ? 0 : product.EndTime!.difference(DateTime.now()).inHours;
     return BlocProvider(
       create: (context) => ProductBloc(store: store, product: product),
       child: Stack(
@@ -32,6 +34,64 @@ class ProductPage extends StatelessWidget {
                   fit: BoxFit.fitHeight,
                 ),
               ),
+            ),
+          ),
+          Positioned(
+            top: 20,
+            right: 20,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: MyColors.primaryColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.lock_clock,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        'Disponível por',
+                        style: MyTheme.typographyWhite.label1,
+                      ),
+                      Text(
+                        '$timeLeft horas',
+                        style: MyTheme.typographyWhite.label1.copyWith(fontWeight: FontWeight.bold, fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: MyColors.primaryColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.monetization_on_outlined,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        'Desconto de',
+                        style: MyTheme.typographyWhite.label1,
+                      ),
+                      Text(
+                        '${product.desconto}%',
+                        style: MyTheme.typographyWhite.label1.copyWith(fontWeight: FontWeight.bold, fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
           Positioned.fill(

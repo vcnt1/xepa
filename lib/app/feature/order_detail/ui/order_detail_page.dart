@@ -147,7 +147,7 @@ class StoreInfo extends StatelessWidget {
                   color: MyColors.primaryColor,
                 ),
                 spacing,
-                Text('${toBeginningOfSentenceCase(state.order?.statusEstabelecimento)} dia ${state.order?.updatedAt.day}'),
+                Text('${toBeginningOfSentenceCase(state.order?.statusUsuario)} dia ${state.order?.updatedAt.day}'),
               ],
             ),
           ),

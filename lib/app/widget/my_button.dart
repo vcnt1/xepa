@@ -12,7 +12,7 @@ class MyButton extends StatelessWidget {
     splashColor = MyColors.white70;
   }
 
-  MyButton.white({Key? key, required this.onTap, required this.label, this.child }) : super(key: key) {
+  MyButton.white({Key? key, required this.onTap, required this.label, this.child}) : super(key: key) {
     buttonDecoration = BoxDecoration(
       color: Colors.white,
       borderRadius: BorderRadius.circular(5.0),
@@ -52,20 +52,21 @@ class MyButton extends StatelessWidget {
   Color? splashColor;
 
   @override
-  Widget build(BuildContext context) => InkWell(
-    onTap: onTap,
-    highlightColor: highlightColor,
-    splashColor: splashColor,
-    child: Container(
-      height: MySizes.buttonHeight,
-      decoration: buttonDecoration,
-      child: Center(
-        child: child ??
-            Text(
-              label,
-              style: labelStyle,
+  Widget build(BuildContext context) => Container(
+    decoration: buttonDecoration,
+    height: MySizes.buttonHeight,
+    child: Material(
+      type: MaterialType.transparency,
+      child: InkWell(
+            onTap: onTap,
+            child: Center(
+              child: child ??
+                  Text(
+                    label,
+                    style: labelStyle,
+                  ),
             ),
-      ),
+          ),
     ),
   );
 }
