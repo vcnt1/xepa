@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -74,9 +75,8 @@ class Body extends StatelessWidget {
                 ),
               )
             : Column(
-                children: const [
-                  StoreInfo(),
-                  OrderInfo(),
+                children: [
+                  const StoreInfo(),
                   StatusInfo(),
                 ],
               ),
@@ -147,7 +147,7 @@ class StoreInfo extends StatelessWidget {
                   color: MyColors.primaryColor,
                 ),
                 spacing,
-                Text('${toBeginningOfSentenceCase(state.order?.statusUsuario)} dia ${state.order?.updatedAt.day}'),
+                Expanded(child: AutoSizeText('${toBeginningOfSentenceCase(state.order?.statusUsuario)} dia ${state.order?.updatedAt.day}')),
               ],
             ),
           ),
@@ -210,20 +210,195 @@ class StoreInfo extends StatelessWidget {
       );
 }
 
-class OrderInfo extends StatelessWidget {
-  const OrderInfo({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
 class StatusInfo extends StatelessWidget {
-  const StatusInfo({Key? key}) : super(key: key);
+  StatusInfo({Key? key}) : super(key: key);
+
+  static const String statusAguardandoRestaurante = "Aguardando restaurante aceitar pedido";
+  static const String statusRestaurantePreparando = "Restaurante preparando seu pedido";
+  static const String statusPedidoPronto = "Pedido Pronto";
+  static const String statusPedidoRetirado = "Pedido Retirado";
+  static const String statusRestauranteCancelou = "Restaurante Cancelou pedido";
+  static const String statusEsperandoRestaurante = "Esperando restaurante cancelar pedido";
+  static const String statusPedidoCancelado = "Pedido Cancelado";
+
+  List<String> buildStatusTree(String currentStatus) {
+    bool c = false;
+    List<String> items = [];
+
+    switch (currentStatus) {
+      case statusAguardandoRestaurante:
+      case statusRestaurantePreparando:
+      case statusPedidoPronto:
+      case statusPedidoRetirado:
+        for (String e in [statusAguardandoRestaurante, statusRestaurantePreparando, statusPedidoPronto, statusPedidoRetirado]) {
+          if (!c) {
+            c = e == currentStatus;
+            items.add(e);
+          }
+        }
+        break;
+      case statusRestauranteCancelou:
+        return [statusAguardandoRestaurante, statusRestauranteCancelou];
+      case statusEsperandoRestaurante:
+      case statusPedidoCancelado:
+        for (String e in [statusAguardandoRestaurante, statusEsperandoRestaurante, statusPedidoCancelado]) {
+          if (!c) {
+            c = e == currentStatus;
+            items.add(e);
+          }
+        }
+        break;
+    }
+
+    return items;
+  }
+
+  String getStatusTitle(String currentStatus) {
+    switch (currentStatus) {
+      case statusAguardandoRestaurante:
+        return "Aguardando restaurante";
+      case statusRestaurantePreparando:
+        return "Pedido em preparo";
+      case statusPedidoPronto:
+        return "Pedido pronto para retirada";
+      case statusPedidoRetirado:
+        return "Pedido retirado";
+      case statusEsperandoRestaurante:
+        return "Enviado pedido de cancelamento";
+      case statusRestauranteCancelou:
+      case statusPedidoCancelado:
+        return "Pedido cancelado";
+    }
+
+    return "Unknown status";
+  }
+
+  IconData getStatusIcon(String currentStatus) {
+    switch (currentStatus) {
+      case statusAguardandoRestaurante:
+        return Icons.password;
+      case statusRestaurantePreparando:
+        return Icons.password;
+      case statusPedidoPronto:
+        return Icons.password;
+      case statusPedidoRetirado:
+        return Icons.password;
+      case statusEsperandoRestaurante:
+        return Icons.password;
+      case statusRestauranteCancelou:
+      case statusPedidoCancelado:
+        return Icons.password;
+    }
+
+    return Icons.password;
+  }
+
+  final SizedBox verticalSpacing = const SizedBox(height: 10);
+  final SizedBox horizontalSpacing = const SizedBox(width: 10);
+
+  static final double size = Device().screenWidth * .1;
+
+  Widget dots() => SizedBox(
+        width: size,
+        height: size,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            dot(),
+            dot(),
+            dot(),
+          ],
+        ),
+      );
+
+  Widget dot() => Container(
+        width: 5,
+        height: 5,
+        decoration: BoxDecoration(
+          color: MyColors.primaryColor,
+          borderRadius: const BorderRadius.all(Radius.circular(100)),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return BlocBuilder<OrderDetailBloc, OrderDetailState>(
+      builder: (context, state) => state.order == null
+          ? const SizedBox()
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                verticalSpacing,
+                verticalSpacing,
+                Text(
+                  "Status do pedido",
+                  style: MyTheme.typographyWhite.headline5.copyWith(
+                    color: MyColors.primaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                verticalSpacing,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: buildStatusTree(state.order!.statusUsuario)
+                      .map(
+                        (e) => Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: size,
+                                  height: size,
+                                  child: Icon(
+                                    getStatusIcon(e),
+                                  ),
+                                ),
+                                horizontalSpacing,
+                                Text(
+                                  getStatusTitle(e),
+                                ),
+                              ],
+                            ),
+                            e == state.order!.statusUsuario ? const SizedBox(height: 20) : dots(),
+                          ],
+                        ),
+                      )
+                      .toList(),
+                ),
+                state.order!.statusUsuario == statusPedidoRetirado
+                    ? const SizedBox()
+                    : state.order!.statusUsuario == statusPedidoPronto
+                        ? Row(
+                            children: [
+                              Flexible(
+                                flex: 2,
+                                fit: FlexFit.tight,
+                                child: MyButton.white(
+                                  onTap: () {},
+                                  label: 'Cancelar',
+                                ),
+                              ),
+                              horizontalSpacing,
+                              Flexible(
+                                flex: 4,
+                                fit: FlexFit.tight,
+                                child: MyButton(
+                                  onTap: () {},
+                                  label: 'Confirmar retirada',
+                                ),
+                              )
+                            ],
+                          )
+                        : Container(
+                          child: MyButton.white(
+                            onTap: () {},
+                            label: 'Cancelar',
+                          ),
+                        )
+              ],
+            ),
+    );
   }
 }
