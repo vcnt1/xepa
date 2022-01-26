@@ -45,9 +45,7 @@ class OrderDetailPage extends StatelessWidget {
             ),
           ),
           const Expanded(
-            child: SingleChildScrollView(
-              child: Body(),
-            ),
+            child: Body(),
           ),
         ],
       ),
@@ -62,24 +60,32 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: MySizes.mainHorizontalEdgeInsets,
-      child: BlocBuilder<OrderDetailBloc, OrderDetailState>(
-        builder: (context, state) => state.status == FetchStatus.loading && state.order == null
-            ? const Center(
-                child: SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: CircularProgressIndicator(),
-                ),
-              )
-            : Column(
-                children: [
-                  const StoreInfo(),
-                  StatusInfo(),
-                ],
-              ),
+    return RefreshIndicator(
+      onRefresh: () async {
+        context.read<OrderDetailBloc>().add(OrderDetailFetchData());
+      },
+      child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        child: Container(
+          width: double.infinity,
+          padding: MySizes.mainHorizontalEdgeInsets,
+          child: BlocBuilder<OrderDetailBloc, OrderDetailState>(
+            builder: (context, state) => state.status == FetchStatus.loading && state.order == null
+                ? const Center(
+                    child: SizedBox(
+                      width: 100,
+                      height: 100,
+                      child: CircularProgressIndicator(),
+                    ),
+                  )
+                : Column(
+                    children: [
+                      const StoreInfo(),
+                      StatusInfo(),
+                    ],
+                  ),
+          ),
+        ),
       ),
     );
   }
@@ -392,11 +398,11 @@ class StatusInfo extends StatelessWidget {
                             ],
                           )
                         : Container(
-                          child: MyButton.white(
-                            onTap: () {},
-                            label: 'Cancelar',
-                          ),
-                        )
+                            child: MyButton.white(
+                              onTap: () {},
+                              label: 'Cancelar',
+                            ),
+                          )
               ],
             ),
     );

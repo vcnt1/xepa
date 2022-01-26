@@ -25,8 +25,25 @@
     <list default="true" id="ef0e2d4c-06dc-4fc2-b586-49963d67b4e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/release/app-release.apk" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/feature/order_detail/ui/order_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/order_detail/ui/order_detail_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +89,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images" />
     <property name="memory.settings.postsync.last.time.stamp" value="1639429645612" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -80,16 +97,16 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/app/model/entity" />
+      <recent name="$PROJECT_DIR$/lib/app/feature/bag/ui" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/lib/app/feature" />
       <recent name="$PROJECT_DIR$/lib/app/feature/shopping_history" />
       <recent name="$PROJECT_DIR$/lib/app/feature/product/bloc" />
       <recent name="$PROJECT_DIR$/lib/app/feature/store/bloc" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib/app/model/entity" />
-      <recent name="$PROJECT_DIR$/lib/app/feature/bag/ui" />
     </key>
   </component>
   <component name="RunManager">
@@ -143,10 +160,10 @@
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
     <state x="583" y="376" width="758" height="615" key="#xdebugger.evaluate/59.27.1861.1053@59.27.1861.1053" timestamp="1641987090739" />
-    <state x="159" y="125" width="1661" height="855" maximized="true" key="AVDManager" timestamp="1643065890768">
+    <state x="159" y="125" width="1661" height="855" maximized="true" key="AVDManager" timestamp="1643149450537">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state x="159" y="125" width="1661" height="855" maximized="true" key="AVDManager/59.27.1861.1053@59.27.1861.1053" timestamp="1643065890768" />
+    <state x="159" y="125" width="1661" height="855" maximized="true" key="AVDManager/59.27.1861.1053@59.27.1861.1053" timestamp="1643149450537" />
     <state width="503" height="506" key="DebuggerActiveHint" timestamp="1640811879266">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
@@ -155,22 +172,22 @@
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
     <state x="772" y="310" width="424" height="484" key="FileChooserDialogImpl/59.27.1861.1053@59.27.1861.1053" timestamp="1641987242103" />
-    <state width="1815" height="374" key="GridCell.Tab.0.bottom" timestamp="1642635707262">
+    <state width="1815" height="374" key="GridCell.Tab.0.bottom" timestamp="1643149514180">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="374" key="GridCell.Tab.0.bottom/59.27.1861.1053@59.27.1861.1053" timestamp="1642635707262" />
-    <state width="1815" height="374" key="GridCell.Tab.0.center" timestamp="1642635707262">
+    <state width="1815" height="374" key="GridCell.Tab.0.bottom/59.27.1861.1053@59.27.1861.1053" timestamp="1643149514180" />
+    <state width="1815" height="374" key="GridCell.Tab.0.center" timestamp="1643149514179">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="374" key="GridCell.Tab.0.center/59.27.1861.1053@59.27.1861.1053" timestamp="1642635707262" />
-    <state width="1815" height="374" key="GridCell.Tab.0.left" timestamp="1642635707261">
+    <state width="1815" height="374" key="GridCell.Tab.0.center/59.27.1861.1053@59.27.1861.1053" timestamp="1643149514179" />
+    <state width="1815" height="374" key="GridCell.Tab.0.left" timestamp="1643149514179">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="374" key="GridCell.Tab.0.left/59.27.1861.1053@59.27.1861.1053" timestamp="1642635707261" />
-    <state width="1815" height="374" key="GridCell.Tab.0.right" timestamp="1642635707262">
+    <state width="1815" height="374" key="GridCell.Tab.0.left/59.27.1861.1053@59.27.1861.1053" timestamp="1643149514179" />
+    <state width="1815" height="374" key="GridCell.Tab.0.right" timestamp="1643149514180">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state width="1815" height="374" key="GridCell.Tab.0.right/59.27.1861.1053@59.27.1861.1053" timestamp="1642635707262" />
+    <state width="1815" height="374" key="GridCell.Tab.0.right/59.27.1861.1053@59.27.1861.1053" timestamp="1643149514180" />
     <state x="569" y="299" width="819" height="507" key="NewModule_or_Project.wizard" timestamp="1639429644531">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
@@ -183,10 +200,10 @@
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
     <state width="930" height="527" key="XDebugger.FullValuePopup/59.27.1861.1053@59.27.1861.1053" timestamp="1641936433931" />
-    <state x="680" y="291" width="618" height="632" key="find.popup" timestamp="1641987183429">
+    <state x="680" y="291" width="618" height="632" key="find.popup" timestamp="1643149511066">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>
-    <state x="680" y="291" width="618" height="632" key="find.popup/59.27.1861.1053@59.27.1861.1053" timestamp="1641987183429" />
+    <state x="680" y="291" width="618" height="632" key="find.popup/59.27.1861.1053@59.27.1861.1053" timestamp="1643149511066" />
     <state x="653" y="253" key="run.anything.popup" timestamp="1640871301703">
       <screen x="59" y="27" width="1861" height="1053" />
     </state>

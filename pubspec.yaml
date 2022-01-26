@@ -38,6 +38,13 @@ dev_dependencies:
 
   flutter_lints: ^1.0.0
 
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/xepa-1024.png"
+  adaptive_icon_background: "#f27523"
+  adaptive_icon_foreground: "assets/images/xepa-432.png"
+
 flutter:
   uses-material-design: true
   assets:
