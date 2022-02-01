@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:html';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xepa/app/config/config.dart';
@@ -23,7 +22,7 @@ class UserRepository {
     String credentials = prefs.getString("credentials") ?? '';
 
     try {
-      final obj = credentialsFromJson(credentials);
+      final obj = credentialsFromJson(jsonDecode(credentials));
 
       return Entity<Credentials>(object: obj);
     } catch (e) {
@@ -46,7 +45,7 @@ class UserRepository {
     try {
       final loginResponse = loginResponseFromJson(res);
 
-      prefs.setString("credentials", credentialsToJson(Credentials(email: email, password: password)));
+      prefs.setString("credentials", jsonEncode(credentialsToJson(Credentials(email: email, password: password))));
       user = loginResponse.result;
       TOKEN = loginResponse.token ?? '';
       Network().setAuthHeader();
@@ -60,6 +59,9 @@ class UserRepository {
   Future<void> logOut() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.remove("credentials");
+    user = null;
+    TOKEN = '';
+    Network().setAuthHeader();
   }
 
   Future<Entity<SiginResponse>> signIn({
@@ -67,6 +69,7 @@ class UserRepository {
     required String name,
     required String password,
   }) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     final res = await _userService.signIn(
       body: {
         "Nome": name,
@@ -79,6 +82,7 @@ class UserRepository {
     try {
       final siginInResponse = siginResponseFromJson(res);
 
+      prefs.setString("credentials", jsonEncode(credentialsToJson(Credentials(email: email, password: password))));
       user = siginInResponse.result;
       TOKEN = siginInResponse.token;
       Network().setAuthHeader();

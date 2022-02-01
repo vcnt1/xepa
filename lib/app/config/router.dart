@@ -6,6 +6,7 @@ import 'package:xepa/app/feature/order_detail/ui/order_detail_page.dart';
 import 'package:xepa/app/feature/product/ui/product_page.dart';
 import 'package:xepa/app/feature/profile/ui/profile_page.dart';
 import 'package:xepa/app/feature/session/ui/popup_login.dart';
+import 'package:xepa/app/feature/session/ui/splash_page.dart';
 import 'package:xepa/app/feature/store/ui/store_page.dart';
 import 'package:xepa/app/feature/welcome/welcome_page.dart';
 import 'package:xepa/app/model/entity/barrel.dart';
@@ -14,11 +15,17 @@ import 'package:xepa/app/model/entity/store.dart';
 class MyRouter {
   const MyRouter();
 
+  static const String splashRoute = '/splash';
   static const String welcomeRoute = '/welcome';
   static const String innerRoute = '/inner';
 
   static get outter => (RouteSettings settings) {
     switch (settings.name) {
+      case splashRoute:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => SplashPage(),
+        );
       case welcomeRoute:
         return MaterialPageRoute(
           settings: settings,
@@ -28,11 +35,6 @@ class MyRouter {
         return MaterialPageRoute(
           settings: settings,
           builder: (_) => const InnerPage(),
-        );
-      case popUpLoginRoute:
-        return MaterialPageRoute(
-          settings: settings,
-          builder: (_) => const PopUpLogin(),
         );
       default:
         return defaultRoute();
@@ -45,7 +47,6 @@ class MyRouter {
   static const String profileRoute = '/profile';
   static const String storeRoute = '/store';
   static const String productRoute = '/product';
-  static const String popUpLoginRoute = '/popup/login';
 
   static get inner => (RouteSettings settings) {
         switch (settings.name) {

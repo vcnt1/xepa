@@ -78,7 +78,11 @@ class LoginModal extends StatelessWidget {
                 BlocBuilder<LoginBloc, LoginState>(
                   builder: (context, state) => MyButton(
                     label: 'Entrar',
-                    child: state.status.isSubmissionInProgress ? const CircularProgressIndicator() : null,
+                    child: state.status.isSubmissionInProgress
+                        ? const MyLoadingIndicator(
+                            color: Colors.white,
+                          )
+                        : null,
                     onTap: () {
                       if (state.status.isValidated) {
                         context.read<LoginBloc>().add(LoginSubmitted());
@@ -88,7 +92,7 @@ class LoginModal extends StatelessWidget {
                 ),
                 spacing,
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Navigator.of(context).pop();
                     showModalBottomSheet<void>(
                       context: context,

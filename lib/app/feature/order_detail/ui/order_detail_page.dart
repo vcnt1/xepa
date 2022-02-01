@@ -67,6 +67,7 @@ class Body extends StatelessWidget {
       onRefresh: () async {
         context.read<OrderDetailBloc>().add(OrderDetailFetchData());
       },
+      color: MyColors.primaryColor,
       child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
         child: Container(
@@ -78,7 +79,7 @@ class Body extends StatelessWidget {
                     child: SizedBox(
                       width: 100,
                       height: 100,
-                      child: CircularProgressIndicator(),
+                      child: MyLoadingIndicator(),
                     ),
                   )
                 : Column(
@@ -226,7 +227,7 @@ class StatusInfo extends StatelessWidget {
   static const String statusRestaurantePreparando = "Restaurante preparando seu pedido";
   static const String statusPedidoPronto = "Pedido Pronto";
   static const String statusPedidoRetirado = "Pedido Retirado";
-  static const String statusRestauranteCancelou = "Restaurante Cancelou pedido";
+  static const String statusRestauranteCancelou = "Estabelecimento cancelou pedido";
   static const String statusEsperandoRestaurante = "Esperando restaurante cancelar pedido";
   static const String statusPedidoCancelado = "Pedido Cancelado";
 
@@ -358,7 +359,7 @@ class StatusInfo extends StatelessWidget {
                           Row(
                             children: [
                               Flexible(
-                                flex: 4,
+                                flex: 2,
                                 child: Image.asset(
                                   'assets/images/madsonPedidoAndamento.png',
                                   fit: BoxFit.fitHeight,
@@ -366,7 +367,7 @@ class StatusInfo extends StatelessWidget {
                               ),
                               horizontalSpacing,
                               Flexible(
-                                  flex: 8,
+                                  flex: 4,
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [

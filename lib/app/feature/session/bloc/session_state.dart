@@ -2,11 +2,11 @@ part of 'session_bloc.dart';
 
 class SessionState extends Equatable {
   const SessionState._({
-    this.status = SessionStatus.unknown,
+    this.status = SessionStatus.initial,
     this.user = User.empty,
   });
 
-  const SessionState.unknown() : this._();
+  const SessionState.unknown()  : this._(status: SessionStatus.unknown);
 
   const SessionState.authenticated(User user)
       : this._(status: SessionStatus.authenticated, user: user);

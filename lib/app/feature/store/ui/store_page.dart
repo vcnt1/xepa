@@ -193,7 +193,7 @@ class FoodList extends StatelessWidget {
             child: SingleChildScrollView(
               child: BlocBuilder<StoreBloc, StoreState>(
                 builder: (context, state) => state.status == FetchStatus.loading
-                    ? const CircularProgressIndicator()
+                    ? const MyLoadingIndicator()
                     : state.products.isEmpty
                         ? Column(
                             children: [

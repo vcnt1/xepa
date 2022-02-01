@@ -100,6 +100,6 @@ class BagBloc extends Bloc<BagEvent, BagState> {
       return;
     }
 
-    emit(state.copyWith(fetchStatus: FetchStatus.success, orderId: res.object));
+    emit(state.copyWith(fetchStatus: FetchStatus.success, orderId: res.object, total: 0.0, products: const [], store: null));
   }
 }

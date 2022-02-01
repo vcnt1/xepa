@@ -39,7 +39,7 @@ class OutterPage extends StatelessWidget {
                 child: Navigator(
                   key: outterNavigator,
                   onGenerateRoute: MyRouter.outter,
-                  initialRoute: MyRouter.welcomeRoute,
+                  initialRoute: MyRouter.splashRoute,
                 ),
               ),
             ),

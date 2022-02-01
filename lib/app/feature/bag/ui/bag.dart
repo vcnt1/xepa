@@ -188,7 +188,7 @@ class Summary extends StatelessWidget {
             builder: (context, sessionState) => BlocBuilder<BagBloc, BagState>(
               builder: (context, bagState) => MyButton(
                 label: 'Finalizar Pedido',
-                child: bagState.fetchStatus == FetchStatus.loading ? const CircularProgressIndicator() : null,
+                child: bagState.fetchStatus == FetchStatus.loading ? const MyLoadingIndicator(color: Colors.white,) : null,
                 onTap: () {
                   if (bagState.products.isNotEmpty) {
                     if (sessionState.status == SessionStatus.authenticated) {

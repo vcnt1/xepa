@@ -103,7 +103,7 @@ class Produto {
     id: json["Id"],
     idEstabelecimento: json["Id_Estabelecimento"],
     nome: json["Nome"],
-    descricao: json["Descricao"],
+    descricao: json["Descricao"] ?? '',
     imagem: json["Imagem"],
     tipo: json["Tipo"],
     data: DateTime.parse(json["Data"]),

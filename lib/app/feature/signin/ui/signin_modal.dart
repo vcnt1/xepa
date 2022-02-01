@@ -78,7 +78,7 @@ class SigninModal extends StatelessWidget {
                 BlocBuilder<SigninBloc, SigninState>(
                   builder: (context, state) => MyButton(
                     label: 'Confirmar',
-                    child: state.status.isSubmissionInProgress ? const CircularProgressIndicator() : null,
+                    child: state.status.isSubmissionInProgress ? const MyLoadingIndicator(color: Colors.white,) : null,
                     onTap: () {
                       if(state.status.isValidated) {
                         context.read<SigninBloc>().add(SigninSubmitted());

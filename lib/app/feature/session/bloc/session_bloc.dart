@@ -4,7 +4,6 @@ import 'package:xepa/app/config/enums.dart';
 import 'package:xepa/app/helper/application_helper.dart';
 import 'package:xepa/app/model/entity/barrel.dart';
 import 'package:xepa/app/model/entity/credentials.dart';
-import 'package:xepa/app/model/error.dart';
 import 'package:xepa/app/model/service/login_response.dart';
 import 'package:xepa/app/repository/user_repository.dart';
 
@@ -15,7 +14,7 @@ part 'session_state.dart';
 class SessionBloc extends Bloc<SessionEvent, SessionState> {
   SessionBloc({required UserRepository userRepository})
       : _userRepository = userRepository,
-        super(const SessionState._()) {
+        super(const SessionState.unknown()) {
     on<SessionEvent>(_onEvent);
   }
 
@@ -24,25 +23,38 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
   void _onEvent(SessionEvent event, Emitter<SessionState> emit) {
     if (event is SessionUserAuthenticated) return _onSessionUserAuthenticated(event, emit);
     if (event is SessionCheckStatus) return _onSessionCheckStatus(event, emit);
+    if (event is SessionLogoutRequested) return _onSessionLogout(event, emit);
   }
 
   void _onSessionUserAuthenticated(
     SessionUserAuthenticated event,
     Emitter<SessionState> emit,
   ) async {
-    emit(SessionState.authenticated(event.user));
+      emit(SessionState.authenticated(event.user));
+  }
+
+  void _onSessionLogout(
+      SessionLogoutRequested event,
+      Emitter<SessionState> emit,
+      ) async {
+    await _userRepository.logOut();
+    emit(const SessionState._());
   }
 
   void _onSessionCheckStatus(
     SessionCheckStatus event,
     Emitter<SessionState> emit,
   ) async {
+    if ([SessionStatus.authenticated, SessionStatus.unauthenticated].contains(state.status)) {
+      return;
+    }
+
     Entity<Credentials> retrieveCredentials = await MyApplicationHelper.delayedRequest(
       _userRepository.retrieveLoggedUserInfo(),
       const Duration(seconds: 2),
     );
 
-    if (retrieveCredentials is MyError) {
+    if (retrieveCredentials.error != null || retrieveCredentials.object == null) {
       emit(const SessionState.unauthenticated());
       return;
     }
@@ -53,6 +65,8 @@ class SessionBloc extends Bloc<SessionEvent, SessionState> {
       password: credentials.password,
     );
 
-    emit(SessionState.authenticated(res.object!.result ?? User.empty));
+    if(state.status != SessionStatus.authenticated) {
+      emit(SessionState.authenticated(res.object!.result ?? User.empty));
+    }
   }
 }

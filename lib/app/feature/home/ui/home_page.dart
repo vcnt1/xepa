@@ -26,9 +26,16 @@ class HomePage extends StatelessWidget {
             color: MyColors.primaryColor,
           ),
         ),
-        const Expanded(
-          child: SingleChildScrollView(
-            child: Body(),
+        Expanded(
+          child: RefreshIndicator(
+            onRefresh: () async {
+              context.read<HomeBloc>().add(HomeFetchData());
+            },
+            color: MyColors.primaryColor,
+            child: const SingleChildScrollView(
+              physics: AlwaysScrollableScrollPhysics(),
+              child: Body(),
+            ),
           ),
         ),
       ],
@@ -113,14 +120,12 @@ class StoreList extends StatelessWidget {
           spacing,
           BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) => state.status == FetchStatus.loading
-                ? const CircularProgressIndicator()
+                ? const MyLoadingIndicator()
                 : state.stores.isEmpty
                     ? const Text('No stores available')
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: state.stores
-                            .map((store) => StoreItem(store: store))
-                            .toList(),
+                        children: state.stores.map((store) => StoreItem(store: store)).toList(),
                       ),
           ),
         ],

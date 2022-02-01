@@ -3,6 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/feature/home/bloc/home_bloc.dart';
+import 'package:xepa/app/feature/navigation/ui/outter_page.dart';
+import 'package:xepa/app/feature/session/bloc/session_bloc.dart';
+import 'package:xepa/app/feature/session/ui/splash_page.dart';
 import 'package:xepa/app/widget/widgets.dart';
 
 import '../../../widget/app_bar.dart';
@@ -41,9 +44,20 @@ class Body extends StatelessWidget {
     return Center(
       child: SizedBox(
         width: Device().screenWidth * .5,
-        child: MyButton(
-          onTap: () {},
-          label: 'Sair',
+        child: BlocListener<SessionBloc, SessionState>(
+          listener: (context, state){
+            if(state.status == SessionStatus.initial){
+              outterNavigator.currentState!.pushAndRemoveUntil(MaterialPageRoute(
+                builder: (_) => SplashPage(),
+              ), (route) => false);
+            }
+          },
+          child: MyButton(
+            onTap: () {
+              context.read<SessionBloc>().add(SessionLogoutRequested());
+            },
+            label: 'Sair',
+          ),
         ),
       ),
     );

@@ -81,7 +81,7 @@ class OrdersList extends StatelessWidget {
           spacing,
           BlocBuilder<OrderBloc, OrderState>(
             builder: (context, state) => state.status == FetchStatus.loading
-                ? const CircularProgressIndicator()
+                ? const MyLoadingIndicator()
                 : state.orders.isEmpty
                     ? const Text('No orders available')
                     : Column(

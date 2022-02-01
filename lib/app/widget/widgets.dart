@@ -23,3 +23,4 @@ export 'modal/my_list_picker.dart';
 export 'my_logo.dart';
 export 'app_bar.dart';
 export 'my_text_field.dart';
+export 'my_loading_indicator.dart';
