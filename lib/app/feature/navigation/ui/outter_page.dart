@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
-
 final GlobalKey<NavigatorState> outterNavigator = GlobalKey<NavigatorState>();
 
 class OutterPage extends StatelessWidget {
@@ -25,7 +24,9 @@ class OutterPage extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider<SessionBloc>(
-            create: (context) => SessionBloc(),
+            create: (context) => SessionBloc(
+              userRepository: context.read<UserRepository>(),
+            ),
           ),
         ],
         child: Material(

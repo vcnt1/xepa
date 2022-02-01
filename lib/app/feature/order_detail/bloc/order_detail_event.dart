@@ -8,3 +8,7 @@ abstract class OrderDetailEvent extends Equatable {
 }
 
 class OrderDetailFetchData extends OrderDetailEvent{}
+
+class OrderCancelRequested extends OrderDetailEvent{}
+
+class OrderConfirmTakeAway extends OrderDetailEvent{}

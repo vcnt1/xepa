@@ -8,11 +8,14 @@ class MyLogo extends StatelessWidget {
   final Color? color;
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      'assets/images/xepa-logo.svg',
-      semanticsLabel: 'Xepa! Logo',
-      width: width,
-      color: color,
+    return Hero(
+      tag: "xepa-logo-babyyy",
+      child: SvgPicture.asset(
+        'assets/images/xepa-logo.svg',
+        semanticsLabel: 'Xepa! Logo',
+        width: width,
+        color: color,
+      ),
     );
   }
 }

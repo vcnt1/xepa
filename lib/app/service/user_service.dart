@@ -20,4 +20,6 @@ class UserService {
   Future<dynamic> fetchOrders({required String userId}) async => await _network.get('$urlFetchOrders/$userId$queryString1');
 
   Future<dynamic> fetchOrderDetails({required String orderId}) async => await _network.get('$urlOrder/$orderId');
+
+  Future<dynamic> changeOrderStatus({required String orderId, required Map<String, String> body}) async => await _network.put('$urlOrder/$orderId', body: body);
 }

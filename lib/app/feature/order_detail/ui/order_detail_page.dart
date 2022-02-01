@@ -4,7 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:xepa/app/config/config.dart';
+import 'package:xepa/app/feature/bag/ui/bag.dart';
 import 'package:xepa/app/feature/order_detail/bloc/order_detail_bloc.dart';
+import 'package:xepa/app/feature/order_detail/ui/popup_cancel.dart';
+import 'package:xepa/app/feature/order_detail/ui/popup_confirm.dart';
 import 'package:xepa/app/helper/application_helper.dart';
 import 'package:xepa/app/model/entity/order.dart';
 import 'package:xepa/app/repository/user_repository.dart';
@@ -153,7 +156,7 @@ class StoreInfo extends StatelessWidget {
                   color: MyColors.primaryColor,
                 ),
                 spacing,
-                Expanded(child: AutoSizeText('${toBeginningOfSentenceCase(state.order?.statusUsuario)} dia ${state.order?.updatedAt.day}')),
+                Expanded(child: AutoSizeText('${toBeginningOfSentenceCase(state.order?.statusUsuario)}')),
               ],
             ),
           ),
@@ -227,6 +230,8 @@ class StatusInfo extends StatelessWidget {
   static const String statusEsperandoRestaurante = "Esperando restaurante cancelar pedido";
   static const String statusPedidoCancelado = "Pedido Cancelado";
 
+  List<String> statusForCancelButton = [statusAguardandoRestaurante, statusRestaurantePreparando, statusPedidoPronto];
+
   List<String> buildStatusTree(String currentStatus) {
     bool c = false;
     List<String> items = [];
@@ -282,18 +287,18 @@ class StatusInfo extends StatelessWidget {
   IconData getStatusIcon(String currentStatus) {
     switch (currentStatus) {
       case statusAguardandoRestaurante:
-        return Icons.password;
+        return Icons.store;
       case statusRestaurantePreparando:
-        return Icons.password;
+        return Icons.restore;
       case statusPedidoPronto:
-        return Icons.password;
+        return Icons.directions_walk_outlined;
       case statusPedidoRetirado:
-        return Icons.password;
+        return Icons.check_circle;
       case statusEsperandoRestaurante:
-        return Icons.password;
+        return Icons.cancel_schedule_send_rounded;
       case statusRestauranteCancelou:
       case statusPedidoCancelado:
-        return Icons.password;
+        return Icons.cancel;
     }
 
     return Icons.password;
@@ -329,6 +334,7 @@ class StatusInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final orderBloc = context.read<OrderDetailBloc>();
     return BlocBuilder<OrderDetailBloc, OrderDetailState>(
       builder: (context, state) => state.order == null
           ? const SizedBox()
@@ -345,44 +351,73 @@ class StatusInfo extends StatelessWidget {
                   ),
                 ),
                 verticalSpacing,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: buildStatusTree(state.order!.statusUsuario)
-                      .map(
-                        (e) => Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  width: size,
-                                  height: size,
-                                  child: Icon(
-                                    getStatusIcon(e),
-                                  ),
+                verticalSpacing,
+                state.order!.statusUsuario == statusPedidoPronto
+                    ? Column(
+                        children: [
+                          Row(
+                            children: [
+                              Flexible(
+                                flex: 4,
+                                child: Image.asset(
+                                  'assets/images/madsonPedidoAndamento.png',
+                                  fit: BoxFit.fitHeight,
                                 ),
-                                horizontalSpacing,
-                                Text(
-                                  getStatusTitle(e),
-                                ),
-                              ],
-                            ),
-                            e == state.order!.statusUsuario ? const SizedBox(height: 20) : dots(),
-                          ],
-                        ),
-                      )
-                      .toList(),
-                ),
-                state.order!.statusUsuario == statusPedidoRetirado
-                    ? const SizedBox()
-                    : state.order!.statusUsuario == statusPedidoPronto
-                        ? Row(
+                              ),
+                              horizontalSpacing,
+                              Flexible(
+                                  flex: 8,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Pronto para retirada!',
+                                        style: MyTheme.typographyBlack.headline4.copyWith(
+                                          color: MyColors.primaryColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Text(
+                                        'Dirija-se ao estabelecimento receber seu pedido.',
+                                        style: MyTheme.typographyBlack.headline6,
+                                      ),
+                                      SummaryItem(
+                                        label: 'Endereço:',
+                                        value: state.order == null
+                                            ? '-'
+                                            : '${state.order!.estabelecimentos.logradouro}, ${state.order!.estabelecimentos.numero} - ${state.order!.estabelecimentos.bairro}, ${state.order!.estabelecimentos.localidade} - ${state.order!.estabelecimentos.uf}',
+                                        valueStyle: MyTheme.typographyBlack.headline6.copyWith(fontWeight: FontWeight.w500),
+                                        iconData: Icons.map_outlined,
+                                      ),
+                                      SummaryItem(
+                                        label: 'Prazo:',
+                                        value: "1 hora",
+                                        valueStyle: MyTheme.typographyBlack.headline6.copyWith(fontWeight: FontWeight.w500),
+                                        iconData: Icons.alarm,
+                                      ),
+                                    ],
+                                  ))
+                            ],
+                          ),
+                          verticalSpacing,
+                          verticalSpacing,
+                          Row(
                             children: [
                               Flexible(
                                 flex: 2,
                                 fit: FlexFit.tight,
                                 child: MyButton.white(
-                                  onTap: () {},
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      useRootNavigator: false,
+                                      builder: (BuildContext context) => AlertDialog(
+                                        elevation: 0,
+                                        backgroundColor: Colors.transparent,
+                                        content: PopUpCancel(orderDetailBloc: orderBloc),
+                                      ),
+                                    );
+                                  },
                                   label: 'Cancelar',
                                 ),
                               ),
@@ -391,18 +426,81 @@ class StatusInfo extends StatelessWidget {
                                 flex: 4,
                                 fit: FlexFit.tight,
                                 child: MyButton(
-                                  onTap: () {},
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      useRootNavigator: false,
+                                      builder: (BuildContext context) => AlertDialog(
+                                        elevation: 0,
+                                        backgroundColor: Colors.transparent,
+                                        content: PopUpConfirm(orderDetailBloc: orderBloc),
+                                      ),
+                                    );
+                                  },
                                   label: 'Confirmar retirada',
                                 ),
                               )
                             ],
-                          )
-                        : Container(
-                            child: MyButton.white(
-                              onTap: () {},
-                              label: 'Cancelar',
-                            ),
-                          )
+                          ),
+                        ],
+                      )
+                    : Column(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: buildStatusTree(state.order!.statusUsuario)
+                                .map(
+                                  (e) => Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Container(
+                                            width: size,
+                                            height: size,
+                                            decoration: BoxDecoration(
+                                              color: MyColors.primaryColor,
+                                              borderRadius: const BorderRadius.all(Radius.circular(5)),
+                                            ),
+                                            child: Icon(
+                                              getStatusIcon(e),
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                          horizontalSpacing,
+                                          Text(
+                                            getStatusTitle(e),
+                                            style: MyTheme.typographyBlack.headline6,
+                                          ),
+                                        ],
+                                      ),
+                                      e == state.order!.statusUsuario ? const SizedBox(height: 20) : dots(),
+                                    ],
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                          state.order!.statusUsuario == statusPedidoRetirado
+                              ? const SizedBox()
+                              : statusForCancelButton.contains(state.order!.statusUsuario)
+                                  ? MyButton.white(
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          useRootNavigator: false,
+                                          builder: (BuildContext context) => AlertDialog(
+                                            elevation: 0,
+                                            backgroundColor: Colors.transparent,
+                                            content: PopUpCancel(orderDetailBloc: orderBloc),
+                                          ),
+                                        );
+                                      },
+                                      label: 'Cancelar',
+                                    )
+                                  : const SizedBox(),
+                        ],
+                      ),
+                verticalSpacing,
               ],
             ),
     );

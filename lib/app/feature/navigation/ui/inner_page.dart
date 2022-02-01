@@ -66,7 +66,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
 
   List<String> routes = [MyRouter.homeRoute, '', MyRouter.ordersRoute, MyRouter.profileRoute];
   void _onItemTapped(int index) {
-    if([1,3].contains(index)){
+    if([1].contains(index)){
       return;
     }
 

@@ -13,8 +13,8 @@ class User {
     required this.id,
     required this.nome,
     required this.email,
-    this.senha,
     required this.tipo,
+    this.senha,
     this.updatedAt,
     this.createdAt,
   });

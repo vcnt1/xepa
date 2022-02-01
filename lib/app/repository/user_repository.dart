@@ -1,9 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:html';
 
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/helper/application_helper.dart';
 import 'package:xepa/app/model/entity/barrel.dart';
+import 'package:xepa/app/model/entity/credentials.dart';
 import 'package:xepa/app/model/entity/entity.dart';
 import 'package:xepa/app/model/entity/user.dart';
 import 'package:xepa/app/model/error.dart';
@@ -15,12 +18,24 @@ class UserRepository {
   final UserService _userService = UserService();
   User? user;
 
-  // SharedPreferences _sharedPreferences;
+  Future<Entity<Credentials>> retrieveLoggedUserInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String credentials = prefs.getString("credentials") ?? '';
+
+    try {
+      final obj = credentialsFromJson(credentials);
+
+      return Entity<Credentials>(object: obj);
+    } catch (e) {
+      return Entity<Credentials>(error: MyError(type: ErrorType.invalidFormat));
+    }
+  }
 
   Future<Entity<LoginResponse>> logIn({
     required String email,
     required String password,
   }) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
     final res = await _userService.logIn(
       body: {
         "Email": email,
@@ -31,6 +46,7 @@ class UserRepository {
     try {
       final loginResponse = loginResponseFromJson(res);
 
+      prefs.setString("credentials", credentialsToJson(Credentials(email: email, password: password)));
       user = loginResponse.result;
       TOKEN = loginResponse.token ?? '';
       Network().setAuthHeader();
@@ -39,6 +55,11 @@ class UserRepository {
     } catch (e) {
       return Entity<LoginResponse>(error: MyApplicationHelper.parseToMyError(res, ErrorType.invalidFormat));
     }
+  }
+
+  Future<void> logOut() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove("credentials");
   }
 
   Future<Entity<SiginResponse>> signIn({
@@ -117,5 +138,27 @@ class UserRepository {
     } catch (e) {
       return Entity<Order>(error: MyApplicationHelper.parseToMyError(res, ErrorType.invalidFormat));
     }
+  }
+
+  Future<bool> cancelOrder(String orderId) async {
+    Map<String, String> body = {
+      "Status_estabelecimento": "usuario deseja cancelar pedido",
+      "Status_usuario": "Esperando restaurante cancelar pedido"
+    };
+
+    final res = await _userService.changeOrderStatus(orderId: orderId, body: body);
+
+    return res is! MyError;
+  }
+
+  Future<bool> confirmOrderTakeAway(String orderId) async {
+    Map<String, String> body = {
+      "Status_estabelecimento": "Pedido Retirado",
+      "Status_usuario": "Pedido Retirado"
+    };
+
+    final res = await _userService.changeOrderStatus(orderId: orderId, body: body);
+
+    return res is! MyError;
   }
 }

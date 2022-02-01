@@ -25,5 +25,6 @@ class SessionUserAuthenticated extends SessionEvent {
   List<Object> get props => [user];
 }
 
-
 class SessionLogoutRequested extends SessionEvent {}
+
+class SessionCheckStatus extends SessionEvent {}

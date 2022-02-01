@@ -3,8 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:xepa/app/config/config.dart';
 import 'package:xepa/app/feature/home/bloc/home_bloc.dart';
-import 'package:xepa/app/helper/application_helper.dart';
-import 'package:xepa/app/model/entity/store.dart';
 import 'package:xepa/app/widget/widgets.dart';
 
 import '../../../widget/app_bar.dart';
@@ -26,9 +24,7 @@ class ProfilePage extends StatelessWidget {
           ),
         ),
         const Expanded(
-          child: SingleChildScrollView(
-            child: Body(),
-          ),
+          child: Body(),
         ),
       ],
     );
@@ -42,10 +38,14 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Text('Get Out'),
-      ],
+    return Center(
+      child: SizedBox(
+        width: Device().screenWidth * .5,
+        child: MyButton(
+          onTap: () {},
+          label: 'Sair',
+        ),
+      ),
     );
   }
 }

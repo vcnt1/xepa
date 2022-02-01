@@ -19,6 +19,8 @@ class OrderDetailBloc extends Bloc<OrderDetailEvent, OrderDetailState> {
 
   void _onEvent(OrderDetailEvent event, Emitter<OrderDetailState> emit) {
     if (event is OrderDetailFetchData) return _onOrderDetailFetchData(event, emit);
+    if (event is OrderCancelRequested) return _onOrderCancelRequested(event, emit);
+    if (event is OrderConfirmTakeAway) return _onOrderConfirmTakeAway(event, emit);
   }
 
   void _onOrderDetailFetchData(
@@ -35,5 +37,23 @@ class OrderDetailBloc extends Bloc<OrderDetailEvent, OrderDetailState> {
     }
 
     emit(OrderDetailState(status: FetchStatus.success, order: res.object));
+  }
+
+  void _onOrderCancelRequested(
+      OrderCancelRequested event,
+      Emitter<OrderDetailState> emit,
+      ) async {
+    emit(OrderDetailState(status: FetchStatus.loading));
+    await _userRepository.cancelOrder(orderId);
+    add(OrderDetailFetchData());
+  }
+
+  void _onOrderConfirmTakeAway(
+      OrderConfirmTakeAway event,
+      Emitter<OrderDetailState> emit,
+      ) async {
+    emit(OrderDetailState(status: FetchStatus.loading));
+    await _userRepository.confirmOrderTakeAway(orderId);
+    add(OrderDetailFetchData());
   }
 }
