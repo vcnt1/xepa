@@ -23,27 +23,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ef0e2d4c-06dc-4fc2-b586-49963d67b4e8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/config/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/config/router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/bag/bloc/bag_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/bag/bloc/bag_bloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/bag/ui/bag.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/bag/ui/bag.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/home/ui/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/home/ui/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/login/ui/login_modal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/login/ui/login_modal.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/navigation/ui/outter_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/navigation/ui/outter_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/order/ui/orders_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/order/ui/orders_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/order_detail/ui/order_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/order_detail/ui/order_detail_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/profile/ui/profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/profile/ui/profile_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/session/bloc/session_bloc.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/session/bloc/session_bloc.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/session/bloc/session_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/session/bloc/session_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/signin/ui/signin_modal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/signin/ui/signin_modal.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/modules/app/android.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/.idea/modules/app/android.app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/feature/store/ui/store_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/store/ui/store_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/feature/welcome/welcome_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/feature/welcome/welcome_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/model/entity/order.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/model/entity/order.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/app/repository/store_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/repository/store_repository.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/app/repository/user_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/repository/user_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/widget/my_logo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/widget/my_logo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app/widget/widgets.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app/widget/widgets.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +55,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -59,9 +64,31 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/android/app">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="xepa" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="xepa" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="xepa" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -75,6 +102,12 @@
       </list>
     </option>
   </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/../key.jks" />
+    <option name="KEY_ALIAS" value="key0" />
+    <option name="REMEMBER_PASSWORDS" value="true" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -87,17 +120,31 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ApkExportedModule" value="xepa.app" />
+    <property name="ExportApk.ApkPath" value="$PROJECT_DIR$/android/app" />
+    <property name="ExportApk.BuildVariants" value="release" />
+    <property name="ExportApk.SignV1" value="true" />
+    <property name="ExportApk.SignV2" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/app/feature/order_detail/ui" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/android" />
     <property name="memory.settings.postsync.last.time.stamp" value="1639429645612" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Properties" />
+  </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/app/model/entity" />
+      <recent name="$PROJECT_DIR$/lib/app/feature/bag/ui" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib/app/feature/order_detail/ui" />
       <recent name="$PROJECT_DIR$/assets/images" />
@@ -105,23 +152,148 @@
       <recent name="$PROJECT_DIR$/lib/app/feature/shopping_history" />
       <recent name="$PROJECT_DIR$/lib/app/feature/product/bloc" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib/app/model/entity" />
-      <recent name="$PROJECT_DIR$/lib/app/feature/bag/ui" />
-    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle app:assembleDebug" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.xepa [assembleDebug]">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="xepa.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
     </configuration>
+    <configuration name="xepa [app:assembleDebug]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="app:assembleDebug" />
+          </list>
+        </option>
+        <option name="vmOptions" value="" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="xepa [assembleDebug]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="assembleDebug" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="xepa [dependencies]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="dependencies" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.xepa [assembleDebug]" />
+        <item itemvalue="Gradle.xepa [app:assembleDebug]" />
+        <item itemvalue="Gradle.xepa [dependencies]" />
+      </list>
+    </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ef0e2d4c-06dc-4fc2-b586-49963d67b4e8" name="Default Changelist" comment="" />
@@ -145,94 +317,73 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="447" y="210" width="1084" height="736" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1639429504103">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state x="532" y="133" width="950" height="537" key="#PSD" timestamp="1683653752124">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state x="447" y="210" width="1084" height="736" key="#com.intellij.execution.impl.EditConfigurationsDialog/59.27.1861.1053@59.27.1861.1053" timestamp="1639429504103" />
-    <state x="721" y="357" width="525" height="416" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1639429442858">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state x="532" y="133" width="950" height="537" key="#PSD/72.27.1770.973@72.27.1770.973" timestamp="1683653752124" />
+    <state x="440" y="91" width="1024" height="852" key="#Project_Structure" timestamp="1683653153971">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state x="721" y="357" width="525" height="416" key="#com.intellij.ide.util.TreeFileChooserDialog/59.27.1861.1053@59.27.1861.1053" timestamp="1639429442858" />
-    <state x="722" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1640788949696">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state x="440" y="91" width="1024" height="852" key="#Project_Structure/72.27.1770.973@72.27.1770.973" timestamp="1683653153971" />
+    <state x="667" y="315" width="570" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1683655928828">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state x="722" y="301" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/59.27.1861.1053@59.27.1861.1053" timestamp="1640788949696" />
-    <state x="583" y="376" width="758" height="615" key="#xdebugger.evaluate" timestamp="1643755128015">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state x="667" y="315" width="570" height="403" key="#com.intellij.fileTypes.FileTypeChooser/72.27.1770.973@72.27.1770.973" timestamp="1683655928828" />
+    <state x="947" y="230" width="489" height="505" key="FileChooserDialogImpl" timestamp="1683656284086">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state x="583" y="376" width="758" height="615" key="#xdebugger.evaluate/59.27.1861.1053@59.27.1861.1053" timestamp="1643755128015" />
-    <state x="159" y="125" width="1651" height="855" maximized="true" key="AVDManager" timestamp="1643748313518">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state x="947" y="230" width="489" height="505" key="FileChooserDialogImpl/72.27.1770.973@72.27.1770.973" timestamp="1683656284086" />
+    <state width="862" height="249" key="GridCell.Tab.0.bottom" timestamp="1683656777668">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state x="159" y="125" width="1651" height="855" maximized="true" key="AVDManager/59.27.1861.1053@59.27.1861.1053" timestamp="1643748313518" />
-    <state width="828" height="506" key="DebuggerActiveHint" timestamp="1643670141071">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state width="862" height="249" key="GridCell.Tab.0.bottom/72.27.1770.973@72.27.1770.973" timestamp="1683656777668" />
+    <state width="862" height="249" key="GridCell.Tab.0.center" timestamp="1683656777666">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state width="828" height="506" key="DebuggerActiveHint/59.27.1861.1053@59.27.1861.1053" timestamp="1643670141071" />
-    <state x="772" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1643672396550">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state width="862" height="249" key="GridCell.Tab.0.center/72.27.1770.973@72.27.1770.973" timestamp="1683656777666" />
+    <state width="862" height="249" key="GridCell.Tab.0.left" timestamp="1683656777664">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state x="772" y="310" width="424" height="484" key="FileChooserDialogImpl/59.27.1861.1053@59.27.1861.1053" timestamp="1643672396550" />
-    <state width="1815" height="374" key="GridCell.Tab.0.bottom" timestamp="1643755325069">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state width="862" height="249" key="GridCell.Tab.0.left/72.27.1770.973@72.27.1770.973" timestamp="1683656777664" />
+    <state width="862" height="249" key="GridCell.Tab.0.right" timestamp="1683656777667">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state width="1815" height="374" key="GridCell.Tab.0.bottom/59.27.1861.1053@59.27.1861.1053" timestamp="1643755325069" />
-    <state width="1815" height="374" key="GridCell.Tab.0.center" timestamp="1643755325068">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state width="862" height="249" key="GridCell.Tab.0.right/72.27.1770.973@72.27.1770.973" timestamp="1683656777667" />
+    <state width="1105" height="339" key="GridCell.Tab.1.bottom" timestamp="1683656330410">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state width="1815" height="374" key="GridCell.Tab.0.center/59.27.1861.1053@59.27.1861.1053" timestamp="1643755325068" />
-    <state width="1815" height="374" key="GridCell.Tab.0.left" timestamp="1643755325067">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state width="1105" height="339" key="GridCell.Tab.1.bottom/72.27.1770.973@72.27.1770.973" timestamp="1683656330410" />
+    <state width="1105" height="339" key="GridCell.Tab.1.center" timestamp="1683656330409">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state width="1815" height="374" key="GridCell.Tab.0.left/59.27.1861.1053@59.27.1861.1053" timestamp="1643755325067" />
-    <state width="1815" height="374" key="GridCell.Tab.0.right" timestamp="1643755325068">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state width="1105" height="339" key="GridCell.Tab.1.center/72.27.1770.973@72.27.1770.973" timestamp="1683656330409" />
+    <state width="1105" height="339" key="GridCell.Tab.1.left" timestamp="1683656330408">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state width="1815" height="374" key="GridCell.Tab.0.right/59.27.1861.1053@59.27.1861.1053" timestamp="1643755325068" />
-    <state x="569" y="299" width="819" height="507" key="NewModule_or_Project.wizard" timestamp="1639429644531">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state width="1105" height="339" key="GridCell.Tab.1.left/72.27.1770.973@72.27.1770.973" timestamp="1683656330408" />
+    <state width="1105" height="339" key="GridCell.Tab.1.right" timestamp="1683656330409">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state x="569" y="299" width="819" height="507" key="NewModule_or_Project.wizard/59.27.1861.1053@59.27.1861.1053" timestamp="1639429644531" />
-    <state x="472" y="130" width="1024" height="845" key="SettingsEditor" timestamp="1639429649274">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state width="1105" height="339" key="GridCell.Tab.1.right/72.27.1770.973@72.27.1770.973" timestamp="1683656330409" />
+    <state x="653" y="104" width="1022" height="737" key="SettingsEditor" timestamp="1685400009421">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state x="472" y="130" width="1024" height="845" key="SettingsEditor/59.27.1861.1053@59.27.1861.1053" timestamp="1639429649274" />
-    <state width="930" height="527" key="XDebugger.FullValuePopup" timestamp="1641936433931">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state x="653" y="104" width="1022" height="737" key="SettingsEditor/72.27.1770.973@72.27.1770.973" timestamp="1685400009421" />
+    <state x="614" y="196" width="676" height="642" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1683243899631">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state width="930" height="527" key="XDebugger.FullValuePopup/59.27.1861.1053@59.27.1861.1053" timestamp="1641936433931" />
-    <state x="1022" y="137" width="618" height="632" key="find.popup" timestamp="1643751689240">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state x="614" y="196" width="676" height="642" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/72.27.1770.973@72.27.1770.973" timestamp="1683243899631" />
+    <state x="728" y="428" width="458" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1683722534810">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state x="1022" y="137" width="618" height="632" key="find.popup/59.27.1861.1053@59.27.1861.1053" timestamp="1643751689240" />
-    <state x="653" y="253" key="run.anything.popup" timestamp="1643756080073">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state x="728" y="428" width="458" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/72.27.1770.973@72.27.1770.973" timestamp="1683722534810" />
+    <state x="646" y="122" width="621" height="783" key="find.popup" timestamp="1685400123418">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state x="653" y="253" key="run.anything.popup/59.27.1861.1053@59.27.1861.1053" timestamp="1643756080073" />
-    <state x="652" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1641861829504">
-      <screen x="59" y="27" width="1861" height="1053" />
+    <state x="646" y="122" width="621" height="783" key="find.popup/72.27.1770.973@72.27.1770.973" timestamp="1685400123418" />
+    <state x="621" y="232" width="672" height="677" key="run.anything.popup" timestamp="1685400210849">
+      <screen x="72" y="27" width="1770" height="973" />
     </state>
-    <state x="652" y="257" width="672" height="678" key="search.everywhere.popup/59.27.1861.1053@59.27.1861.1053" timestamp="1641861829504" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/app/feature/session/ui/splash_page.dart</url>
-          <line>29</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/app/feature/session/ui/splash_page.dart</url>
-          <line>32</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/app/feature/welcome/welcome_page.dart</url>
-          <line>22</line>
-          <option name="timeStamp" value="42" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="621" y="232" width="672" height="677" key="run.anything.popup/72.27.1770.973@72.27.1770.973" timestamp="1685400210849" />
   </component>
 </project>

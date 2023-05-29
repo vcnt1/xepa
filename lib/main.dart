@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:device_preview/device_preview.dart';
 
 import 'dart:async';
 
@@ -18,13 +16,13 @@ Future<void> main() async {
     ),
   );
 
-  final Widget myApp = Device.currentBuildMode() == BuildMode.profile
-      ? DevicePreview(
-          builder: (_) => MyApp(),
-        )
-      : MyApp();
+  // final Widget myApp = Device.currentBuildMode() == BuildMode.profile
+  //     ? DevicePreview(
+  //         builder: (_) => MyApp(),
+  //       )
+  //     : MyApp();
 
-  runApp(myApp);
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -36,13 +34,13 @@ class MyApp extends StatelessWidget {
           Locale('pt', 'BR'),
         ],
         localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate
+          // GlobalMaterialLocalizations.delegate,
+          // GlobalWidgetsLocalizations.delegate,
+          // GlobalCupertinoLocalizations.delegate
         ],
         theme: MyTheme.light,
-        builder: Device.currentBuildMode() == BuildMode.profile ? DevicePreview.appBuilder : null,
-        locale: Device.currentBuildMode() == BuildMode.profile ? DevicePreview.locale(context) : null,
+        // builder: Device.currentBuildMode() == BuildMode.profile ? DevicePreview.appBuilder : null,
+        // locale: Device.currentBuildMode() == BuildMode.profile ? DevicePreview.locale(context) : null,
         home: SafeArea(
           child: OutterPage(),
         ),

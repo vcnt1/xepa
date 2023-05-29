@@ -27,7 +27,6 @@ class StorePage extends StatelessWidget {
           image: DecorationImage(
             image: AssetImage('assets/images/bg-food.png'),
             fit: BoxFit.cover,
-            opacity: .3,
           ),
         ),
         child: Column(
