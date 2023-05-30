@@ -22,11 +22,12 @@ class StorePage extends StatelessWidget {
         storeRepository: context.read<StoreRepository>(),
       )..add(StoreFetchProducts()),
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           color: Colors.black,
           image: DecorationImage(
             image: AssetImage('assets/images/bg-food.png'),
             fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.4), BlendMode.dstATop),
           ),
         ),
         child: Column(

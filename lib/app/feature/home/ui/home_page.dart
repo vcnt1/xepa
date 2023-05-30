@@ -175,10 +175,10 @@ class StoreItem extends StatelessWidget {
                       store.nome ?? '',
                       style: MyTheme.typographyBlack.headline5,
                     ),
-                    Text(
-                      store.tipo ?? '',
-                      style: MyTheme.typographyBlack.headline6,
-                    ),
+                    // Text(
+                    //   store.tipo ?? '',
+                    //   style: MyTheme.typographyBlack.headline6,
+                    // ),
                     Text(
                       store.tipo ?? '',
                       style: MyTheme.typographyBlack.default2.copyWith(color: MyColors.green),
